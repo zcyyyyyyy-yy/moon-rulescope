@@ -1,0 +1,340 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "rulescope/rulescope"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn action(String, Value, Int) -> Action
+
+pub fn age_policy_v2() -> Policy
+
+pub fn analyze(Policy) -> AnalysisReport
+
+pub fn analyze_with_config(Policy, ExplorationConfig) -> AnalysisReport
+
+pub fn build_candidate_domains(Policy, ExplorationConfig) -> Array[CandidateDomain]
+
+pub fn candidate_case_count(Array[CandidateDomain]) -> Int
+
+pub fn checkout_policy() -> Policy
+
+pub fn clean_age_policy() -> Policy
+
+pub fn conflicting_age_policy() -> Policy
+
+pub fn content_policy() -> Policy
+
+pub fn decisions_equal(Evaluation, Evaluation) -> Bool
+
+pub fn diff_policies(Policy, Policy) -> BehaviorDiff
+
+pub fn diff_policies_with_limit(Policy, Policy, Int, Int) -> BehaviorDiff
+
+pub fn domain_summary(Array[CandidateDomain]) -> String
+
+pub fn duplicate_policy() -> Policy
+
+pub fn enumerate_cases(Array[CandidateDomain], Int) -> Array[InputCase]
+
+pub fn evaluate_cases(Policy, Array[InputCase]) -> Array[Evaluation]
+
+pub fn evaluate_policy(Policy, InputCase) -> Evaluation
+
+pub fn evaluate_predicate(Predicate, InputCase) -> String
+
+pub fn evaluate_rule(Rule, InputCase) -> RuleMatch
+
+pub fn expense_policy() -> Policy
+
+pub fn find_domain(Array[CandidateDomain], String) -> CandidateDomain?
+
+pub fn input_field(String, FieldKind, Int) -> Field
+
+pub fn insurance_policy() -> Policy
+
+pub fn matching_rules(Policy, InputCase) -> Array[Rule]
+
+pub fn output_field(String, FieldKind, Int) -> Field
+
+pub fn policy(String, Array[Field], Array[Rule]) -> Policy
+
+pub fn predicate(String, CompareOp, Value, Int) -> Predicate
+
+pub fn predicate_matches(Predicate, InputCase) -> Bool
+
+pub fn redundant_predicate_policy() -> Policy
+
+pub fn rule(String, String, Int, Array[Predicate], Array[Action]) -> Rule
+
+pub fn rule_matches(Rule, InputCase) -> Bool
+
+pub fn shadowed_policy() -> Policy
+
+pub fn trace_policy(Policy, InputCase) -> Array[EvidenceStep]
+
+pub fn unreachable_policy() -> Policy
+
+pub fn validate_case_against_policy(Policy, InputCase) -> Array[String]
+
+pub fn validate_policy(Policy) -> Array[Issue]
+
+pub fn winning_rule_ids(Evaluation) -> Array[String]
+
+// Errors
+
+// Types and methods
+pub struct Action {
+  output : String
+  value : Value
+  source_line : Int
+} derive(Eq, @debug.Debug)
+
+pub struct AnalysisReport {
+  policy_name : String
+  issues : Array[Issue]
+  coverage : Array[RuleCoverage]
+  evaluations : Array[Evaluation]
+  stats : AnalysisStats
+} derive(Eq, @debug.Debug)
+pub fn AnalysisReport::critical_issues(Self) -> Array[Issue]
+pub fn AnalysisReport::find_issue(Self, String) -> Issue?
+pub fn AnalysisReport::information(Self) -> Array[Issue]
+pub fn AnalysisReport::is_clean(Self) -> Bool
+pub fn AnalysisReport::render_text(Self) -> String
+pub fn AnalysisReport::warnings(Self) -> Array[Issue]
+
+pub struct AnalysisStats {
+  candidate_cases : Int
+  covered_cases : Int
+  uncovered_cases : Int
+  conflict_count : Int
+  warning_count : Int
+  information_count : Int
+} derive(Eq, @debug.Debug)
+pub fn AnalysisStats::coverage_percent(Self) -> Int
+
+pub struct BehaviorChangeRecord {
+  input : InputCase
+  output : String
+  before : Value?
+  after : Value?
+  before_rule : String?
+  after_rule : String?
+  kind : ChangeKind
+} derive(Eq, @debug.Debug)
+
+pub struct BehaviorDiff {
+  before_name : String
+  after_name : String
+  checked_cases : Int
+  changes : Array[BehaviorChangeRecord]
+  truncated : Bool
+} derive(Eq, @debug.Debug)
+pub fn BehaviorDiff::changed_case_count(Self) -> Int
+pub fn BehaviorDiff::is_compatible(Self) -> Bool
+pub fn BehaviorDiff::render_text(Self) -> String
+
+pub struct Binding {
+  field : String
+  value : Value
+} derive(Eq, @debug.Debug)
+
+pub struct CandidateDomain {
+  field : String
+  values : Array[Value]
+} derive(Eq, @debug.Debug)
+
+pub enum ChangeKind {
+  AddedDecision
+  RemovedDecision
+  ChangedDecision
+  ChangedWinningRule
+} derive(Eq, @debug.Debug)
+pub fn ChangeKind::render(Self) -> String
+
+pub enum CompareOp {
+  Equal
+  NotEqual
+  LessThan
+  LessOrEqual
+  GreaterThan
+  GreaterOrEqual
+} derive(Eq, @debug.Debug)
+pub fn CompareOp::is_ordering(Self) -> Bool
+pub fn CompareOp::negate(Self) -> Self
+pub fn CompareOp::render(Self) -> String
+
+type DecisionCandidate derive(Eq, @debug.Debug)
+
+pub struct Evaluation {
+  input : InputCase
+  matches : Array[RuleMatch]
+  decisions : Array[OutputDecision]
+  matched_rule_ids : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn Evaluation::decision_for(Self, String) -> OutputDecision?
+pub fn Evaluation::is_covered(Self) -> Bool
+pub fn Evaluation::matched(Self, String) -> Bool
+pub fn Evaluation::render_decisions(Self) -> String
+
+pub struct EvidenceStep {
+  rule_id : String
+  title : String
+  detail : String
+} derive(Eq, @debug.Debug)
+
+pub struct ExplorationConfig {
+  maximum_cases : Int
+  include_midpoints : Bool
+  include_neighbor_values : Bool
+} derive(Eq, @debug.Debug)
+pub fn ExplorationConfig::compact() -> Self
+pub fn ExplorationConfig::fast() -> Self
+pub fn ExplorationConfig::standard() -> Self
+
+pub struct Field {
+  name : String
+  kind : FieldKind
+  role : FieldRole
+  source_line : Int
+} derive(Eq, @debug.Debug)
+
+pub enum FieldKind {
+  Integer(Int, Int)
+  Boolean
+  Enumeration(Array[String])
+} derive(Eq, @debug.Debug)
+pub fn FieldKind::boundary_candidates(Self, Array[Value]) -> Array[Value]
+pub fn FieldKind::contains(Self, Value) -> Bool
+pub fn FieldKind::default_candidates(Self) -> Array[Value]
+pub fn FieldKind::maximum_value(Self) -> Value
+pub fn FieldKind::minimum_value(Self) -> Value
+pub fn FieldKind::name(Self) -> String
+pub fn FieldKind::render(Self) -> String
+pub fn FieldKind::validate(Self, Value) -> ValidationResult
+
+pub enum FieldRole {
+  InputField
+  OutputField
+} derive(Eq, @debug.Debug)
+
+pub struct InputCase {
+  bindings : Array[Binding]
+} derive(Eq, @debug.Debug)
+pub fn InputCase::contains(Self, String) -> Bool
+pub fn InputCase::empty() -> Self
+pub fn InputCase::from_bindings(Array[Binding]) -> Self
+pub fn InputCase::get(Self, String) -> Value?
+pub fn InputCase::render(Self) -> String
+pub fn InputCase::with_binding(Self, String, Value) -> Self
+
+pub struct Issue {
+  code : String
+  severity : Severity
+  kind : IssueKind
+  title : String
+  description : String
+  rule_ids : Array[String]
+  counterexample : InputCase?
+  evidence : Array[EvidenceStep]
+  recommendation : String
+} derive(Eq, @debug.Debug)
+
+pub enum IssueKind {
+  ConflictingDecision
+  ShadowedRule
+  UnreachableRule
+  CoverageGap
+  InvalidDeclaration
+  RedundantPredicate
+  DuplicateRule
+} derive(Eq, @debug.Debug)
+pub fn IssueKind::render(Self) -> String
+
+pub struct OutputDecision {
+  output : String
+  value : Value
+  priority : Int
+  rule_id : String
+} derive(Eq, @debug.Debug)
+
+pub struct Policy {
+  name : String
+  version : String
+  fields : Array[Field]
+  rules : Array[Rule]
+  description : String
+} derive(Eq, @debug.Debug)
+pub fn Policy::enabled_rules(Self) -> Array[Rule]
+pub fn Policy::find_field(Self, String) -> Field?
+pub fn Policy::find_rule(Self, String) -> Rule?
+pub fn Policy::has_field(Self, String) -> Bool
+pub fn Policy::input_count(Self) -> Int
+pub fn Policy::input_fields(Self) -> Array[Field]
+pub fn Policy::output_count(Self) -> Int
+pub fn Policy::output_fields(Self) -> Array[Field]
+pub fn Policy::rule_count(Self) -> Int
+
+pub struct Predicate {
+  field : String
+  operator : CompareOp
+  expected : Value
+  source_line : Int
+} derive(Eq, @debug.Debug)
+
+pub struct Rule {
+  id : String
+  name : String
+  priority : Int
+  predicates : Array[Predicate]
+  actions : Array[Action]
+  source_line : Int
+  tags : Array[String]
+  enabled : Bool
+} derive(Eq, @debug.Debug)
+
+pub struct RuleCoverage {
+  rule_id : String
+  match_count : Int
+  win_count : Int
+  total_cases : Int
+} derive(Eq, @debug.Debug)
+
+pub struct RuleMatch {
+  rule_id : String
+  rule_name : String
+  matched : Bool
+  failed_predicates : Array[Predicate]
+} derive(Eq, @debug.Debug)
+
+pub enum Severity {
+  Critical
+  Warning
+  Information
+} derive(Eq, @debug.Debug)
+pub fn Severity::render(Self) -> String
+
+pub enum ValidationResult {
+  ValidValue(Value)
+  InvalidValue(String)
+} derive(Eq, @debug.Debug)
+
+pub enum Value {
+  IntValue(Int)
+  BoolValue(Bool)
+  TextValue(String)
+} derive(Eq, @debug.Debug)
+pub fn Value::as_bool(Self) -> Bool?
+pub fn Value::as_int(Self) -> Int?
+pub fn Value::as_text(Self) -> String?
+pub fn Value::compare(Self, CompareOp, Self) -> Bool
+pub fn Value::kind_name(Self) -> String
+pub fn Value::render(Self) -> String
+pub fn Value::render_quoted(Self) -> String
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  moonbit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        shell: bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s latest
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Show toolchain
+        run: moon version --all
+
+      - name: Strict check
+        run: moon check --target js --deny-warn
+
+      - name: Test
+        run: moon test --target js
+
+      - name: Build release browser core
+        run: moon build --target js --release
+
+      - name: Verify generated interface and formatting
+        shell: bash
+        run: |
+          moon info
+          moon fmt
+          git diff --exit-code
+
+      - name: Verify generated browser core is current
+        shell: bash
+        run: |
+          cmp _build/js/release/build/web/core/core.js dist/rulescope-core.js
+
+      - name: Verify authored source size
+        shell: pwsh
+        run: ./scripts/count-source.ps1
+

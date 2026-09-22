@@ -1,0 +1,14 @@
+import {
+  "rulescope/rulescope" @rs,
+}
+
+pkgtype(kind: "foreign_library")
+
+options(
+  link: {
+    "js": {
+      "format": "esm",
+      "exports": [ "engine_version", "analyze_scenario", "diff_age_policy" ],
+    },
+  },
+)
