@@ -212,6 +212,8 @@ RuleScope/
 └── scripts/                  # 构建和验收脚本
 ```
 
+进一步阅读：[架构说明](./docs/architecture.md)、[三分钟演示脚本](./docs/demo-script.md)、[项目申报书](./docs/proposal.md)与[开发记录](./docs/development-log.md)。
+
 ## 隐私与安全
 
 - 浏览器工作台不发送网络请求；
