@@ -1,5 +1,12 @@
 # Architecture
 
+## Core vocabulary
+
+- **Policy**: a complete rule set with field and output declarations.
+- **Candidate**: a generated input used to explore boundary behavior.
+- **Finding**: an explainable diagnostic with evidence and remediation.
+- **Trace**: the ordered rule-matching path for one concrete input.
+
 ## Design principles
 
 RuleScope is built around five constraints:
@@ -88,4 +95,3 @@ The case budget protects against domain explosion. The first release targets ten
 - New predicate forms must provide candidate-boundary extraction and evaluation.
 - New issue detectors consume policies, domains, or evaluations and append deterministic issues.
 - Alternative frontends consume the public MoonBit API or the foreign-library exports.
-
