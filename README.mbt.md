@@ -53,6 +53,13 @@ moon run cmd/rulescope -- insurance
 moon run cmd/rulescope -- diff
 ```
 
+如果只想快速确认环境和核心逻辑，可运行：
+
+```bash
+moon check --target js --deny-warn
+moon test --target js
+```
+
 典型输出：
 
 ```text
