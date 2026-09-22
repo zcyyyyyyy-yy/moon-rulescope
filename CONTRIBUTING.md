@@ -29,3 +29,6 @@ Every new analyzer issue must define:
 
 Avoid changing existing issue codes or public field semantics in a patch release. Add new variants exhaustively and update renderers, docs, CLI output, browser labels, and tests together.
 
+## Commit messages
+
+Use a short conventional prefix such as `feat:`, `fix:`, `docs:`, `test:`, or `refactor:`. Keep each commit focused on one reviewable behavior or documentation improvement.
