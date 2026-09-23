@@ -148,13 +148,16 @@ const elements = {
   formatButton: document.querySelector("#format-button"),
   resetButton: document.querySelector("#reset-button"),
   shareButton: document.querySelector("#share-button"),
+  exportJsonButton: document.querySelector("#export-json-button"),
   runSummary: document.querySelector("#run-summary"),
-  issueCount: document.querySelector("#issue-count"),
+  gateCard: document.querySelector("#gate-card"),
+  gateStatus: document.querySelector("#gate-status"),
+  gateDetail: document.querySelector("#gate-detail"),
+  riskScore: document.querySelector("#risk-score"),
   issueDelta: document.querySelector("#issue-delta"),
   coverageValue: document.querySelector("#coverage-value"),
   coverageMeter: document.querySelector("#coverage-meter"),
   pathCount: document.querySelector("#path-count"),
-  durationValue: document.querySelector("#duration-value"),
   tabIssueCount: document.querySelector("#tab-issue-count"),
   issueList: document.querySelector("#issue-list"),
   coverageList: document.querySelector("#coverage-list"),
@@ -465,6 +468,79 @@ function sameValue(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
 }
 
+function winningRuleId(evaluation, output) {
+  const candidates = evaluation.byOutput.get(output) || [];
+  if (!candidates.length) return null;
+  return [...candidates].sort((left, right) => right.rule.priority - left.rule.priority)[0].rule.id;
+}
+
+function analyzeRuleImpacts(policy, inputs, baselineEvaluations) {
+  return policy.rules.map((rule) => {
+    const withoutRule = { ...policy, rules: policy.rules.filter((item) => item.id !== rule.id) };
+    let changedCases = 0;
+    let decisionChanges = 0;
+    let provenanceChanges = 0;
+    let firstCounterexample = null;
+
+    inputs.forEach((input, index) => {
+      const before = baselineEvaluations[index];
+      const after = evaluate(withoutRule, input);
+      let changed = false;
+      policy.outputs.forEach((output) => {
+        const beforeHasValue = Object.hasOwn(before.decisions, output.name);
+        const afterHasValue = Object.hasOwn(after.decisions, output.name);
+        if (
+          beforeHasValue !== afterHasValue ||
+          (beforeHasValue && !sameValue(before.decisions[output.name], after.decisions[output.name]))
+        ) {
+          decisionChanges += 1;
+          changed = true;
+        } else if (
+          beforeHasValue &&
+          winningRuleId(before, output.name) !== winningRuleId(after, output.name)
+        ) {
+          provenanceChanges += 1;
+          changed = true;
+        }
+      });
+      if (changed) {
+        changedCases += 1;
+        if (!firstCounterexample) firstCounterexample = cloneInput(input);
+      }
+    });
+
+    return {
+      ruleId: rule.id,
+      ruleName: rule.name,
+      changedCases,
+      decisionChanges,
+      provenanceChanges,
+      firstCounterexample,
+    };
+  });
+}
+
+function scoreRisk(report) {
+  const critical = report.issues.filter((issue) => issue.severity === "critical").length;
+  const warnings = report.issues.filter((issue) => issue.severity === "warning").length;
+  const information = report.issues.filter((issue) => issue.severity === "info").length;
+  const uncoveredPercent = 100 - Math.floor(report.coverage * 100);
+  return Math.min(100, critical * 35 + warnings * 10 + information * 2 + Math.floor(uncoveredPercent / 2));
+}
+
+function evaluateStrictGate(report) {
+  const critical = report.issues.filter((issue) => issue.severity === "critical").length;
+  const warnings = report.issues.filter((issue) => issue.severity === "warning").length;
+  const coveragePercent = Math.floor(report.coverage * 100);
+  const zeroImpactRules = report.impacts.filter((impact) => impact.changedCases === 0).length;
+  const violations = [];
+  if (critical > 0) violations.push(`${critical} 个冲突`);
+  if (warnings > 0) violations.push(`${warnings} 个警告`);
+  if (coveragePercent < 100) violations.push(`覆盖率 ${coveragePercent}%`);
+  if (zeroImpactRules > 0) violations.push(`${zeroImpactRules} 条零影响规则`);
+  return { passed: violations.length === 0, violations };
+}
+
 function cloneInput(input) {
   return Object.fromEntries(Object.entries(input));
 }
@@ -602,8 +678,9 @@ function analyze(policy) {
   const issues = [...conflicts, ...shadow.issues, ...gaps];
   const coveredPaths = evaluations.filter((evaluation) => Object.keys(evaluation.decisions).length > 0).length;
   const coverage = evaluations.length ? coveredPaths / evaluations.length : 0;
+  const impacts = analyzeRuleImpacts(policy, inputs, evaluations);
   const duration = performance.now() - startedAt;
-  return {
+  const report = {
     policy,
     domains,
     inputs,
@@ -613,8 +690,12 @@ function analyze(policy) {
     winCount: shadow.winCount,
     coveredPaths,
     coverage,
+    impacts,
     duration,
   };
+  report.riskScore = scoreRisk(report);
+  report.qualityGate = evaluateStrictGate(report);
+  return report;
 }
 
 function escapeHtml(value) {
@@ -699,7 +780,7 @@ function renderCoverage() {
         <div class="coverage-row ${matchesCount === 0 ? "unreachable" : ""}">
           <div class="coverage-name">
             <strong>${escapeHtml(rule.name)}</strong>
-            <span>${rule.id} · P${rule.priority} · ${matchesCount} PATHS</span>
+            <span>${rule.id} · P${rule.priority} · ${matchesCount} MATCHES · ${state.report.impacts.find((impact) => impact.ruleId === rule.id)?.changedCases || 0} IMPACTED</span>
           </div>
           <div class="coverage-bar"><i style="width: ${Math.max(percentage, matchesCount ? 2 : 0)}%"></i></div>
           <span class="coverage-percent">${percentage}%</span>
@@ -766,14 +847,18 @@ function showToast(message, type = "info") {
 
 function renderReport() {
   const report = state.report;
-  elements.issueCount.textContent = String(report.issues.length);
   const critical = report.issues.filter((issue) => issue.severity === "critical").length;
   const warnings = report.issues.filter((issue) => issue.severity === "warning").length;
+  elements.gateStatus.textContent = report.qualityGate.passed ? "PASS" : "FAIL";
+  elements.gateDetail.textContent = report.qualityGate.passed
+    ? "冲突、覆盖与规则影响均达标"
+    : report.qualityGate.violations.join(" · ");
+  elements.gateCard.className = `score-card score-gate ${report.qualityGate.passed ? "passed" : "failed"}`;
+  elements.riskScore.textContent = `${report.riskScore}/100`;
   elements.issueDelta.textContent = `${critical} 冲突 · ${warnings} 警告`;
-  elements.coverageValue.textContent = `${Math.round(report.coverage * 100)}%`;
-  elements.coverageMeter.style.width = `${Math.round(report.coverage * 100)}%`;
+  elements.coverageValue.textContent = `${Math.floor(report.coverage * 100)}%`;
+  elements.coverageMeter.style.width = `${Math.floor(report.coverage * 100)}%`;
   elements.pathCount.textContent = report.evaluations.length.toLocaleString("zh-CN");
-  elements.durationValue.textContent = `${report.duration.toFixed(1)}ms`;
   elements.tabIssueCount.textContent = String(report.issues.length);
   elements.runSummary.className = "run-summary complete";
   elements.runSummary.innerHTML = '<span class="status-orb"></span>分析完成';
@@ -881,6 +966,8 @@ function reportAsMarkdown() {
     `- 边界路径：${state.report.evaluations.length}`,
     `- 覆盖率：${Math.round(state.report.coverage * 100)}%`,
     `- 问题数：${state.report.issues.length}`,
+    `- 风险分：${state.report.riskScore}/100`,
+    `- 严格门禁：${state.report.qualityGate.passed ? "PASS" : "FAIL"}`,
     "",
   ];
   state.report.issues.forEach((issue, index) => {
@@ -896,6 +983,46 @@ function reportAsMarkdown() {
     lines.push("");
   });
   return lines.join("\n");
+}
+
+function reportAsJson() {
+  if (!state.report) return null;
+  return {
+    schemaVersion: "rulescope.report/v1",
+    policy: state.policy.name,
+    summary: {
+      candidateCases: state.report.evaluations.length,
+      coveredCases: state.report.coveredPaths,
+      coveragePercent: Math.floor(state.report.coverage * 100),
+      issueCount: state.report.issues.length,
+      riskScore: state.report.riskScore,
+    },
+    qualityGate: state.report.qualityGate,
+    issues: state.report.issues.map((issue) => ({
+      code: issue.code,
+      severity: issue.severity,
+      kind: issue.kind,
+      title: issue.title,
+      description: issue.description,
+      ruleIds: issue.rules.map((rule) => rule.id),
+      counterexample: issue.counterexample,
+      recommendation: issue.recommendation,
+    })),
+    ruleImpacts: state.report.impacts,
+  };
+}
+
+function downloadJsonReport() {
+  const report = reportAsJson();
+  if (!report) return;
+  const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${state.sampleKey}-rulescope-report.json`;
+  link.click();
+  URL.revokeObjectURL(url);
+  showToast("JSON 取证报告已导出");
 }
 
 function loadSample(key) {
@@ -936,6 +1063,7 @@ elements.formatButton.addEventListener("click", formatSource);
 elements.resetButton.addEventListener("click", () => loadSample(state.sampleKey));
 elements.traceButton.addEventListener("click", renderTrace);
 elements.shareButton.addEventListener("click", () => copyText(reportAsMarkdown(), "Markdown 报告已复制"));
+elements.exportJsonButton.addEventListener("click", downloadJsonReport);
 elements.copyCounterexample.addEventListener("click", () => {
   if (state.selectedIssue) {
     copyText(JSON.stringify(state.selectedIssue.counterexample, null, 2), "反例 JSON 已复制");

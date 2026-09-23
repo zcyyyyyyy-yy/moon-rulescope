@@ -523,6 +523,23 @@ input:focus-visible {
   background: var(--red);
 }
 
+.score-card.score-gate::before {
+  background: var(--amber);
+}
+
+.score-card.score-gate.passed::before {
+  background: var(--green);
+}
+
+.score-card.score-gate.failed strong,
+.score-card.score-risk strong {
+  color: var(--red);
+}
+
+.score-card.score-gate.passed strong {
+  color: var(--green);
+}
+
 .score-label {
   display: block;
   margin-bottom: 7px;
@@ -538,10 +555,6 @@ input:focus-visible {
   font-weight: 630;
   letter-spacing: -0.04em;
   text-overflow: ellipsis;
-}
-
-.score-card.score-risk strong {
-  color: var(--red);
 }
 
 .score-card small {

@@ -48,6 +48,9 @@
           <button class="button button-ghost" id="share-button" type="button">
             复制报告
           </button>
+          <button class="button button-ghost" id="export-json-button" type="button">
+            导出 JSON
+          </button>
           <button class="button button-primary" id="run-button" type="button">
             <span class="run-icon" aria-hidden="true">▶</span>
             执行取证
@@ -109,9 +112,14 @@
           </header>
 
           <div class="scoreboard" id="scoreboard">
+            <article class="score-card score-gate" id="gate-card">
+              <span class="score-label">严格门禁</span>
+              <strong id="gate-status">—</strong>
+              <small id="gate-detail">等待规则取证</small>
+            </article>
             <article class="score-card score-risk">
-              <span class="score-label">风险问题</span>
-              <strong id="issue-count">—</strong>
+              <span class="score-label">风险分</span>
+              <strong id="risk-score">—</strong>
               <small id="issue-delta">冲突 / 遮蔽 / 缺口</small>
             </article>
             <article class="score-card">
@@ -123,11 +131,6 @@
               <span class="score-label">检查路径</span>
               <strong id="path-count">—</strong>
               <small>边界候选组合</small>
-            </article>
-            <article class="score-card score-time">
-              <span class="score-label">分析耗时</span>
-              <strong id="duration-value">—</strong>
-              <small>确定性结果</small>
             </article>
           </div>
 
