@@ -2,8 +2,12 @@
 
 ## Unreleased
 
-- Improved onboarding, architecture vocabulary, and competition demo guidance.
-- Added a public development log for traceable release preparation.
+- Added counterfactual rule-impact analysis with reproducible examples.
+- Added configurable strict and balanced quality gates plus a 0-100 risk score.
+- Added versioned `rulescope.report/v1` JSON output for CI and dashboards.
+- Added CLI commands for impact analysis, quality gates, and JSON reports.
+- Added workbench gate status, risk score, impacted-path counts, and JSON export.
+- CI now enforces a clean reference policy and uploads an analysis artifact.
 
 ## 0.1.0 — 2026-09-20
 

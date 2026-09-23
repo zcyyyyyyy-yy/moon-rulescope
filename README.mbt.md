@@ -2,7 +2,9 @@
 
 > 让业务规则在上线前暴露矛盾。
 
-RuleScope 是一个使用 MoonBit 编写的、可解释的业务规则冲突检测与行为差异分析引擎。它把规则视为可静态分析的程序：从字段定义和条件边界生成候选输入，检查同优先级冲突、不可达规则、优先级遮蔽、覆盖缺口、重复规则和版本行为变化，并为问题提供可复现的最小反例。
+RuleScope 是一个使用 MoonBit 编写的规则程序静态取证与发布门禁工具。它不负责承载线上业务规则，而是在规则上线前生成边界输入、搜索矛盾行为、评估单条规则的真实影响，并为 CI 提供可重复执行的通过/失败结论。
+
+这使它区别于常规规则引擎或规则包：规则引擎回答“给定输入应执行什么”，RuleScope 进一步回答“哪些输入会产生冲突”“删除某条规则会改变多少行为”“这次规则版本是否满足发布标准”。
 
 项目同时提供：
 
@@ -10,7 +12,7 @@ RuleScope 是一个使用 MoonBit 编写的、可解释的业务规则冲突检�
 - MoonBit CLI；
 - MoonBit 编译生成的 JavaScript 外部库；
 - 无服务端、可离线运行的浏览器工作台；
-- 45 个确定性测试和四个业务示例；
+- 54 个确定性测试和四个业务示例；
 - 比赛申报、架构、演示和验收文档。
 
 ## 为什么需要 RuleScope
@@ -51,6 +53,9 @@ moon run cmd/rulescope -- expense
 moon run cmd/rulescope -- content
 moon run cmd/rulescope -- insurance
 moon run cmd/rulescope -- diff
+moon run cmd/rulescope -- impact checkout
+moon run cmd/rulescope -- gate clean-age strict
+moon run cmd/rulescope -- json checkout
 ```
 
 如果只想快速确认环境和核心逻辑，可运行：
@@ -202,7 +207,10 @@ RuleScope/
 ├── domain.mbt                # 边界候选域与路径枚举
 ├── evaluator.mbt             # 条件、规则和优先级执行
 ├── fixtures.mbt              # 四个业务示例与测试策略
+├── gate.mbt                  # 风险评分与发布质量门禁
+├── impact.mbt                # 单条规则反事实影响分析
 ├── model.mbt                 # 公共领域模型
+├── report_json.mbt           # 版本化机器可读报告
 ├── value.mbt                 # 值类型、比较和字段类型
 ├── rulescope_wbtest.mbt      # MoonBit 测试
 ├── cmd/rulescope/            # CLI
