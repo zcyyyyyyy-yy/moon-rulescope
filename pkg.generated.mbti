@@ -108,8 +108,10 @@ pub fn AnalysisReport::critical_issues(Self) -> Array[Issue]
 pub fn AnalysisReport::find_issue(Self, String) -> Issue?
 pub fn AnalysisReport::information(Self) -> Array[Issue]
 pub fn AnalysisReport::is_clean(Self) -> Bool
+pub fn AnalysisReport::render_json(Self, pretty? : Bool) -> String
 pub fn AnalysisReport::render_text(Self) -> String
 pub fn AnalysisReport::risk_score(Self) -> Int
+pub fn AnalysisReport::to_json(Self) -> Json
 pub fn AnalysisReport::warnings(Self) -> Array[Issue]
 
 pub struct AnalysisStats {

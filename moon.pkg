@@ -1,1 +1,4 @@
 // RuleScope public library package.
+import {
+  "moonbitlang/core/json",
+}

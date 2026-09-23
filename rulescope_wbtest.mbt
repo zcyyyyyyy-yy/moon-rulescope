@@ -449,3 +449,19 @@ test "risk score ranks a conflict above a clean policy" {
   assert_true(risky > clean)
   assert_true(risky <= 100)
 }
+
+///|
+test "JSON report is valid and versioned" {
+  let text = analyze(conflicting_age_policy()).render_json()
+  assert_true(@json.valid(text))
+  assert_true(text.contains("rulescope.report/v1"))
+  assert_true(text.contains("riskScore"))
+}
+
+///|
+test "JSON report includes reproducible issue evidence" {
+  let text = analyze(conflicting_age_policy()).render_json(pretty=false)
+  assert_true(text.contains("RS1001"))
+  assert_true(text.contains("counterexample"))
+  assert_true(text.contains("ruleCoverage"))
+}
