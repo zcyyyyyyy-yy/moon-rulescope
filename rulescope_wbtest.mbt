@@ -405,3 +405,47 @@ test "rule impact report includes counterexample evidence" {
   assert_true(text.contains("A001"))
   assert_true(text.contains("example"))
 }
+
+///|
+test "strict quality gate accepts a complete conflict-free policy" {
+  let policy = clean_age_policy()
+  let result = evaluate_quality_gate(
+    analyze(policy),
+    analyze_rule_impacts(policy),
+    QualityGate::strict(),
+  )
+  assert_true(result.passed)
+  assert_eq(result.violations.length(), 0)
+}
+
+///|
+test "quality gate rejects conflicting behavior" {
+  let policy = conflicting_age_policy()
+  let result = evaluate_quality_gate(
+    analyze(policy),
+    analyze_rule_impacts(policy),
+    QualityGate::balanced(),
+  )
+  assert_true(!result.passed)
+  assert_true(result.render_text().contains("GATE_CRITICAL"))
+}
+
+///|
+test "quality gate rejects zero-impact rules" {
+  let policy = unreachable_policy()
+  let result = evaluate_quality_gate(
+    analyze(policy),
+    analyze_rule_impacts(policy),
+    QualityGate::balanced(),
+  )
+  assert_true(!result.passed)
+  assert_true(result.render_text().contains("GATE_ZERO_IMPACT"))
+}
+
+///|
+test "risk score ranks a conflict above a clean policy" {
+  let clean = analyze(clean_age_policy()).risk_score()
+  let risky = analyze(conflicting_age_policy()).risk_score()
+  assert_true(risky > clean)
+  assert_true(risky <= 100)
+}

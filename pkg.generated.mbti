@@ -46,6 +46,8 @@ pub fn evaluate_policy(Policy, InputCase) -> Evaluation
 
 pub fn evaluate_predicate(Predicate, InputCase) -> String
 
+pub fn evaluate_quality_gate(AnalysisReport, Array[RuleImpact], QualityGate) -> GateResult
+
 pub fn evaluate_rule(Rule, InputCase) -> RuleMatch
 
 pub fn expense_policy() -> Policy
@@ -107,6 +109,7 @@ pub fn AnalysisReport::find_issue(Self, String) -> Issue?
 pub fn AnalysisReport::information(Self) -> Array[Issue]
 pub fn AnalysisReport::is_clean(Self) -> Bool
 pub fn AnalysisReport::render_text(Self) -> String
+pub fn AnalysisReport::risk_score(Self) -> Int
 pub fn AnalysisReport::warnings(Self) -> Array[Issue]
 
 pub struct AnalysisStats {
@@ -224,6 +227,22 @@ pub enum FieldRole {
   OutputField
 } derive(Eq, @debug.Debug)
 
+pub struct GateResult {
+  gate_name : String
+  policy_name : String
+  passed : Bool
+  risk_score : Int
+  violations : Array[GateViolation]
+} derive(Eq, @debug.Debug)
+pub fn GateResult::render_text(Self) -> String
+
+pub struct GateViolation {
+  code : String
+  message : String
+  actual : Int
+  expected : Int
+} derive(Eq, @debug.Debug)
+
 pub struct InputCase {
   bindings : Array[Binding]
 } derive(Eq, @debug.Debug)
@@ -287,6 +306,16 @@ pub struct Predicate {
   expected : Value
   source_line : Int
 } derive(Eq, @debug.Debug)
+
+pub struct QualityGate {
+  name : String
+  maximum_critical_issues : Int
+  maximum_warnings : Int
+  minimum_coverage_percent : Int
+  require_every_rule_to_have_impact : Bool
+} derive(Eq, @debug.Debug)
+pub fn QualityGate::balanced() -> Self
+pub fn QualityGate::strict() -> Self
 
 pub struct Rule {
   id : String
