@@ -373,3 +373,35 @@ test "behavior diff text includes direction" {
   assert_true(text.contains("Clean age gate"))
   assert_true(text.contains("Clean age gate v2"))
 }
+
+///|
+test "rule impact finds behavior owned by both age rules" {
+  let impacts = analyze_rule_impacts(clean_age_policy())
+  assert_eq(impacts.length(), 2)
+  assert_true(impacts[0].is_behaviorally_relevant())
+  assert_true(impacts[1].is_behaviorally_relevant())
+  assert_true(impacts[0].first_counterexample is Some(_))
+}
+
+///|
+test "rule impact identifies unreachable rule as zero impact" {
+  let impacts = analyze_rule_impacts(unreachable_policy())
+  let mut found = false
+  for impact in impacts {
+    if impact.rule_id == "U001" {
+      found = true
+      assert_eq(impact.changed_cases, 0)
+      assert_true(!impact.is_behaviorally_relevant())
+    }
+  }
+  assert_true(found)
+}
+
+///|
+test "rule impact report includes counterexample evidence" {
+  let policy = clean_age_policy()
+  let text = render_rule_impact_report(policy, analyze_rule_impacts(policy))
+  assert_true(text.contains("Rule impact report"))
+  assert_true(text.contains("A001"))
+  assert_true(text.contains("example"))
+}
