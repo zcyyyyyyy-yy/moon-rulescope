@@ -9,6 +9,27 @@ fn print_help() -> Unit {
   println("  moon run cmd/rulescope -- content")
   println("  moon run cmd/rulescope -- insurance")
   println("  moon run cmd/rulescope -- diff")
+  println("  moon run cmd/rulescope -- impact [scenario]")
+  println("  moon run cmd/rulescope -- gate [scenario] [strict|balanced]")
+}
+
+///|
+fn argument_or(
+  arguments : Array[String],
+  index : Int,
+  fallback : String,
+) -> String {
+  if index < arguments.length() {
+    arguments[index]
+  } else {
+    fallback
+  }
+}
+
+///|
+fn print_unknown_scenario(name : String) -> Unit {
+  println("Unknown scenario: " + name)
+  println("Choose checkout, expense, content, or insurance.")
 }
 
 ///|
@@ -44,13 +65,45 @@ fn main {
     println(difference.render_text())
     return
   }
+  if command == "impact" {
+    let scenario = argument_or(arguments, 3, "checkout")
+    match selected_policy(scenario) {
+      Some(policy) =>
+        println(
+          @rs.render_rule_impact_report(
+            policy,
+            @rs.analyze_rule_impacts(policy),
+          ),
+        )
+      None => print_unknown_scenario(scenario)
+    }
+    return
+  }
+  if command == "gate" {
+    let scenario = argument_or(arguments, 3, "checkout")
+    let gate_name = argument_or(arguments, 4, "strict")
+    match selected_policy(scenario) {
+      Some(policy) => {
+        let gate = if gate_name == "balanced" {
+          @rs.QualityGate::balanced()
+        } else {
+          @rs.QualityGate::strict()
+        }
+        let report = @rs.analyze(policy)
+        let impacts = @rs.analyze_rule_impacts(policy)
+        println(@rs.evaluate_quality_gate(report, impacts, gate).render_text())
+      }
+      None => print_unknown_scenario(scenario)
+    }
+    return
+  }
   match selected_policy(command) {
     Some(policy) => {
       let report = @rs.analyze(policy)
       println(report.render_text())
     }
     None => {
-      println("Unknown scenario: " + command)
+      print_unknown_scenario(command)
       println("")
       print_help()
     }
