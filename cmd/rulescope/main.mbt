@@ -11,6 +11,7 @@ fn print_help() -> Unit {
   println("  moon run cmd/rulescope -- diff")
   println("  moon run cmd/rulescope -- impact [scenario]")
   println("  moon run cmd/rulescope -- gate [scenario] [strict|balanced]")
+  println("  moon run cmd/rulescope -- json [scenario]")
 }
 
 ///|
@@ -39,6 +40,7 @@ fn selected_policy(name : String) -> @rs.Policy? {
     "expense" => Some(@rs.expense_policy())
     "content" => Some(@rs.content_policy())
     "insurance" => Some(@rs.insurance_policy())
+    "clean-age" => Some(@rs.clean_age_policy())
     _ => None
   }
 }
@@ -93,6 +95,14 @@ fn main {
         let impacts = @rs.analyze_rule_impacts(policy)
         println(@rs.evaluate_quality_gate(report, impacts, gate).render_text())
       }
+      None => print_unknown_scenario(scenario)
+    }
+    return
+  }
+  if command == "json" {
+    let scenario = argument_or(arguments, 3, "checkout")
+    match selected_policy(scenario) {
+      Some(policy) => println(@rs.analyze(policy).render_json())
       None => print_unknown_scenario(scenario)
     }
     return

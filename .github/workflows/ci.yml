@@ -27,6 +27,16 @@ jobs:
       - name: Test
         run: moon test --target js
 
+      - name: Enforce release policy gate
+        shell: bash
+        run: |
+          gate_output="$(moon run cmd/rulescope --target js -- gate clean-age strict)"
+          echo "$gate_output"
+          echo "$gate_output" | grep -q 'Quality gate \[strict\]: PASS'
+
+      - name: Generate machine-readable analysis artifact
+        run: moon run cmd/rulescope --target js -- json checkout > rulescope-report.json
+
       - name: Build release browser core
         run: moon build --target js --release
 
@@ -45,4 +55,10 @@ jobs:
       - name: Verify authored source size
         shell: pwsh
         run: ./scripts/count-source.ps1
+
+      - name: Upload analysis artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rulescope-analysis
+          path: rulescope-report.json
 
