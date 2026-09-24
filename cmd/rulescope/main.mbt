@@ -12,6 +12,9 @@ fn print_help() -> Unit {
   println("  moon run cmd/rulescope -- impact [scenario]")
   println("  moon run cmd/rulescope -- gate [scenario] [strict|balanced]")
   println("  moon run cmd/rulescope -- json [scenario]")
+  println("  moon run cmd/rulescope -- diff-gate [strict|compatible]")
+  println("  moon run cmd/rulescope -- vectors [scenario]")
+  println("  moon run cmd/rulescope -- bundle [scenario] [strict|balanced]")
 }
 
 ///|
@@ -103,6 +106,49 @@ fn main {
     let scenario = argument_or(arguments, 3, "checkout")
     match selected_policy(scenario) {
       Some(policy) => println(@rs.analyze(policy).render_json())
+      None => print_unknown_scenario(scenario)
+    }
+    return
+  }
+  if command == "diff-gate" {
+    let budget_name = argument_or(arguments, 3, "compatible")
+    let budget = if budget_name == "strict" {
+      @rs.BehaviorBudget::strict()
+    } else {
+      @rs.BehaviorBudget::backward_compatible()
+    }
+    let difference = @rs.diff_policies(
+      @rs.clean_age_policy(),
+      @rs.age_policy_v2(),
+    )
+    println(@rs.evaluate_behavior_gate(difference, budget).render_text())
+    return
+  }
+  if command == "vectors" {
+    let scenario = argument_or(arguments, 3, "checkout")
+    match selected_policy(scenario) {
+      Some(policy) => {
+        let report = @rs.analyze(policy)
+        let impacts = @rs.analyze_rule_impacts(policy)
+        let vectors = @rs.generate_regression_vectors(report, impacts)
+        println(@rs.render_regression_suite(policy.name, vectors))
+      }
+      None => print_unknown_scenario(scenario)
+    }
+    return
+  }
+  if command == "bundle" {
+    let scenario = argument_or(arguments, 3, "checkout")
+    let gate_name = argument_or(arguments, 4, "strict")
+    match selected_policy(scenario) {
+      Some(policy) => {
+        let gate = if gate_name == "balanced" {
+          @rs.QualityGate::balanced()
+        } else {
+          @rs.QualityGate::strict()
+        }
+        println(@rs.render_release_evidence(policy, gate))
+      }
       None => print_unknown_scenario(scenario)
     }
     return
