@@ -11,6 +11,23 @@ pub struct RuleImpact {
 } derive(Eq, Debug)
 
 ///|
+pub enum ImpactBand {
+  DormantImpact
+  LowImpact
+  MediumImpact
+  HighImpact
+} derive(Eq, Debug)
+
+///|
+pub struct RuleImpactSummary {
+  total_rules : Int
+  behaviorally_relevant_rules : Int
+  dormant_rules : Int
+  hottest_rule_id : String?
+  hottest_changed_cases : Int
+} derive(Eq, Debug)
+
+///|
 /// Disable one rule without mutating the caller's policy.
 fn policy_without_rule(policy : Policy, rule_id : String) -> Policy {
   let rules : Array[Rule] = []
@@ -90,6 +107,94 @@ pub fn analyze_rule_impacts(policy : Policy) -> Array[RuleImpact] {
 ///|
 pub fn RuleImpact::is_behaviorally_relevant(self : RuleImpact) -> Bool {
   self.changed_cases > 0
+}
+
+///|
+pub fn RuleImpact::impact_percent(self : RuleImpact, total_cases : Int) -> Int {
+  if total_cases <= 0 {
+    0
+  } else {
+    self.changed_cases * 100 / total_cases
+  }
+}
+
+///|
+pub fn RuleImpact::impact_band(
+  self : RuleImpact,
+  total_cases : Int,
+) -> ImpactBand {
+  let percent = self.impact_percent(total_cases)
+  if self.changed_cases == 0 {
+    DormantImpact
+  } else if percent >= 50 {
+    HighImpact
+  } else if percent >= 15 {
+    MediumImpact
+  } else {
+    LowImpact
+  }
+}
+
+///|
+pub fn ImpactBand::render(self : ImpactBand) -> String {
+  match self {
+    DormantImpact => "dormant"
+    LowImpact => "low"
+    MediumImpact => "medium"
+    HighImpact => "high"
+  }
+}
+
+///|
+/// Return a deterministic highest-impact-first view without changing the
+/// analyzer's declaration-order result.
+pub fn rank_rule_impacts(impacts : Array[RuleImpact]) -> Array[RuleImpact] {
+  let ranked = impacts.copy()
+  for index = 0; index < ranked.length(); index = index + 1 {
+    let mut best = index
+    for candidate = index + 1
+        candidate < ranked.length()
+        candidate = candidate + 1 {
+      if ranked[candidate].changed_cases > ranked[best].changed_cases {
+        best = candidate
+      }
+    }
+    if best != index {
+      let current = ranked[index]
+      ranked[index] = ranked[best]
+      ranked[best] = current
+    }
+  }
+  ranked
+}
+
+///|
+pub fn summarize_rule_impacts(impacts : Array[RuleImpact]) -> RuleImpactSummary {
+  let ranked = rank_rule_impacts(impacts)
+  let mut relevant = 0
+  let mut dormant = 0
+  for impact in ranked {
+    if impact.is_behaviorally_relevant() {
+      relevant = relevant + 1
+    } else {
+      dormant = dormant + 1
+    }
+  }
+  {
+    total_rules: impacts.length(),
+    behaviorally_relevant_rules: relevant,
+    dormant_rules: dormant,
+    hottest_rule_id: if ranked.length() > 0 {
+      Some(ranked[0].rule_id)
+    } else {
+      None
+    },
+    hottest_changed_cases: if ranked.length() > 0 {
+      ranked[0].changed_cases
+    } else {
+      0
+    },
+  }
 }
 
 ///|

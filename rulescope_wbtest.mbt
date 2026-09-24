@@ -536,3 +536,33 @@ test "regression vector limit is enforced" {
   assert_eq(vectors.length(), 2)
   assert_true(render_regression_suite(policy.name, vectors).contains("count=2"))
 }
+
+///|
+test "rule impacts are ranked by changed case count" {
+  let ranked = rank_rule_impacts(analyze_rule_impacts(checkout_policy()))
+  assert_true(ranked.length() > 1)
+  for index = 1; index < ranked.length(); index = index + 1 {
+    assert_true(ranked[index - 1].changed_cases >= ranked[index].changed_cases)
+  }
+}
+
+///|
+test "unreachable rule receives dormant impact band" {
+  let impacts = analyze_rule_impacts(unreachable_policy())
+  for impact in impacts {
+    if impact.rule_id == "U001" {
+      assert_eq(impact.impact_band(10), DormantImpact)
+      assert_eq(impact.impact_band(10).render(), "dormant")
+    }
+  }
+}
+
+///|
+test "impact summary names the hottest rule" {
+  let impacts = analyze_rule_impacts(clean_age_policy())
+  let summary = summarize_rule_impacts(impacts)
+  assert_eq(summary.total_rules, 2)
+  assert_eq(summary.behaviorally_relevant_rules, 2)
+  assert_true(summary.hottest_rule_id is Some(_))
+  assert_true(summary.hottest_changed_cases > 0)
+}

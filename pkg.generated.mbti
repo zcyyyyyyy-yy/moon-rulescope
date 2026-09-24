@@ -72,6 +72,8 @@ pub fn predicate(String, CompareOp, Value, Int) -> Predicate
 
 pub fn predicate_matches(Predicate, InputCase) -> Bool
 
+pub fn rank_rule_impacts(Array[RuleImpact]) -> Array[RuleImpact]
+
 pub fn redundant_predicate_policy() -> Policy
 
 pub fn render_regression_suite(String, Array[RegressionVector]) -> String
@@ -83,6 +85,8 @@ pub fn rule(String, String, Int, Array[Predicate], Array[Action]) -> Rule
 pub fn rule_matches(Rule, InputCase) -> Bool
 
 pub fn shadowed_policy() -> Policy
+
+pub fn summarize_rule_impacts(Array[RuleImpact]) -> RuleImpactSummary
 
 pub fn trace_policy(Policy, InputCase) -> Array[EvidenceStep]
 
@@ -272,6 +276,14 @@ pub struct GateViolation {
   expected : Int
 } derive(Eq, @debug.Debug)
 
+pub enum ImpactBand {
+  DormantImpact
+  LowImpact
+  MediumImpact
+  HighImpact
+} derive(Eq, @debug.Debug)
+pub fn ImpactBand::render(Self) -> String
+
 pub struct InputCase {
   bindings : Array[Binding]
 } derive(Eq, @debug.Debug)
@@ -388,8 +400,18 @@ pub struct RuleImpact {
   affected_outputs : Array[String]
   first_counterexample : InputCase?
 } derive(Eq, @debug.Debug)
+pub fn RuleImpact::impact_band(Self, Int) -> ImpactBand
+pub fn RuleImpact::impact_percent(Self, Int) -> Int
 pub fn RuleImpact::is_behaviorally_relevant(Self) -> Bool
 pub fn RuleImpact::render_text(Self) -> String
+
+pub struct RuleImpactSummary {
+  total_rules : Int
+  behaviorally_relevant_rules : Int
+  dormant_rules : Int
+  hottest_rule_id : String?
+  hottest_changed_cases : Int
+} derive(Eq, @debug.Debug)
 
 pub struct RuleMatch {
   rule_id : String
