@@ -56,6 +56,8 @@ pub fn expense_policy() -> Policy
 
 pub fn find_domain(Array[CandidateDomain], String) -> CandidateDomain?
 
+pub fn generate_regression_vectors(AnalysisReport, Array[RuleImpact], maximum_vectors? : Int) -> Array[RegressionVector]
+
 pub fn input_field(String, FieldKind, Int) -> Field
 
 pub fn insurance_policy() -> Policy
@@ -71,6 +73,8 @@ pub fn predicate(String, CompareOp, Value, Int) -> Predicate
 pub fn predicate_matches(Predicate, InputCase) -> Bool
 
 pub fn redundant_predicate_policy() -> Policy
+
+pub fn render_regression_suite(String, Array[RegressionVector]) -> String
 
 pub fn render_rule_impact_report(Policy, Array[RuleImpact]) -> String
 
@@ -341,6 +345,21 @@ pub struct QualityGate {
 } derive(Eq, @debug.Debug)
 pub fn QualityGate::balanced() -> Self
 pub fn QualityGate::strict() -> Self
+
+pub enum RegressionSource {
+  IssueEvidence
+  RuleImpactEvidence
+} derive(Eq, @debug.Debug)
+pub fn RegressionSource::render(Self) -> String
+
+pub struct RegressionVector {
+  id : String
+  input : InputCase
+  expected_decisions : Array[OutputDecision]
+  reason : String
+  source : RegressionSource
+} derive(Eq, @debug.Debug)
+pub fn RegressionVector::render_text(Self) -> String
 
 pub struct Rule {
   id : String

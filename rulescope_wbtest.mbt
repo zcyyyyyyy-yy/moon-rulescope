@@ -497,3 +497,42 @@ test "behavior gate accounts for every diff record" {
     difference.changes.length(),
   )
 }
+
+///|
+test "regression vectors promote issue counterexamples first" {
+  let policy = conflicting_age_policy()
+  let report = analyze(policy)
+  let vectors = generate_regression_vectors(
+    report,
+    analyze_rule_impacts(policy),
+  )
+  assert_true(vectors.length() > 0)
+  assert_eq(vectors[0].source, IssueEvidence)
+  assert_true(vectors[0].reason.contains("RS1001"))
+}
+
+///|
+test "regression vectors carry expected decisions" {
+  let policy = clean_age_policy()
+  let report = analyze(policy)
+  let vectors = generate_regression_vectors(
+    report,
+    analyze_rule_impacts(policy),
+  )
+  assert_true(vectors.length() > 0)
+  assert_true(vectors[0].expected_decisions.length() > 0)
+  assert_true(vectors[0].render_text().contains("expected access"))
+}
+
+///|
+test "regression vector limit is enforced" {
+  let policy = checkout_policy()
+  let report = analyze(policy)
+  let vectors = generate_regression_vectors(
+    report,
+    analyze_rule_impacts(policy),
+    maximum_vectors=2,
+  )
+  assert_eq(vectors.length(), 2)
+  assert_true(render_regression_suite(policy.name, vectors).contains("count=2"))
+}
