@@ -465,3 +465,35 @@ test "JSON report includes reproducible issue evidence" {
   assert_true(text.contains("counterexample"))
   assert_true(text.contains("ruleCoverage"))
 }
+
+///|
+test "strict behavior gate accepts an unchanged policy" {
+  let policy = clean_age_policy()
+  let result = evaluate_behavior_gate(
+    diff_policies(policy, policy),
+    BehaviorBudget::strict(),
+  )
+  assert_true(result.passed)
+  assert_eq(result.breaking_changes, 0)
+}
+
+///|
+test "behavior gate rejects breaking decision changes" {
+  let result = evaluate_behavior_gate(
+    diff_policies(clean_age_policy(), age_policy_v2()),
+    BehaviorBudget::backward_compatible(),
+  )
+  assert_true(!result.passed)
+  assert_true(result.breaking_changes > 0)
+  assert_true(result.render_text().contains("DIFF_BREAKING"))
+}
+
+///|
+test "behavior gate accounts for every diff record" {
+  let difference = diff_policies(clean_age_policy(), age_policy_v2())
+  let result = evaluate_behavior_gate(difference, BehaviorBudget::strict())
+  assert_eq(
+    result.breaking_changes + result.added_decisions + result.provenance_changes,
+    difference.changes.length(),
+  )
+}

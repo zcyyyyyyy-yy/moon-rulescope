@@ -40,6 +40,8 @@ pub fn duplicate_policy() -> Policy
 
 pub fn enumerate_cases(Array[CandidateDomain], Int) -> Array[InputCase]
 
+pub fn evaluate_behavior_gate(BehaviorDiff, BehaviorBudget) -> BehaviorGateResult
+
 pub fn evaluate_cases(Policy, Array[InputCase]) -> Array[Evaluation]
 
 pub fn evaluate_policy(Policy, InputCase) -> Evaluation
@@ -124,6 +126,15 @@ pub struct AnalysisStats {
 } derive(Eq, @debug.Debug)
 pub fn AnalysisStats::coverage_percent(Self) -> Int
 
+pub struct BehaviorBudget {
+  name : String
+  maximum_breaking_changes : Int
+  maximum_added_decisions : Int
+  maximum_provenance_changes : Int
+} derive(Eq, @debug.Debug)
+pub fn BehaviorBudget::backward_compatible() -> Self
+pub fn BehaviorBudget::strict() -> Self
+
 pub struct BehaviorChangeRecord {
   input : InputCase
   output : String
@@ -144,6 +155,18 @@ pub struct BehaviorDiff {
 pub fn BehaviorDiff::changed_case_count(Self) -> Int
 pub fn BehaviorDiff::is_compatible(Self) -> Bool
 pub fn BehaviorDiff::render_text(Self) -> String
+
+pub struct BehaviorGateResult {
+  budget_name : String
+  before_name : String
+  after_name : String
+  passed : Bool
+  breaking_changes : Int
+  added_decisions : Int
+  provenance_changes : Int
+  violations : Array[GateViolation]
+} derive(Eq, @debug.Debug)
+pub fn BehaviorGateResult::render_text(Self) -> String
 
 pub struct Binding {
   field : String
