@@ -566,3 +566,37 @@ test "impact summary names the hottest rule" {
   assert_true(summary.hottest_rule_id is Some(_))
   assert_true(summary.hottest_changed_cases > 0)
 }
+
+///|
+test "release evidence bundle is valid versioned JSON" {
+  let text = render_release_evidence(clean_age_policy(), QualityGate::strict())
+  assert_true(@json.valid(text))
+  assert_true(text.contains("rulescope.release-evidence/v1"))
+  assert_true(text.contains("regressionVectors"))
+  assert_true(text.contains("impactSummary"))
+}
+
+///|
+test "release evidence records failed policy gate" {
+  let text = render_release_evidence(
+    conflicting_age_policy(),
+    QualityGate::strict(),
+    pretty=false,
+  )
+  assert_true(@json.valid(text))
+  assert_true(text.contains("GATE_CRITICAL"))
+  assert_true(text.contains("\"passed\":false"))
+}
+
+///|
+test "release evidence respects regression vector limit" {
+  let text = render_release_evidence(
+    checkout_policy(),
+    QualityGate::balanced(),
+    maximum_vectors=1,
+    pretty=false,
+  )
+  assert_true(@json.valid(text))
+  assert_true(text.contains("\"id\":\"RV1\""))
+  assert_true(!text.contains("\"id\":\"RV2\""))
+}

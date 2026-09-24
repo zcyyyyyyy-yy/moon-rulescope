@@ -106,3 +106,136 @@ pub fn AnalysisReport::render_json(
     self.to_json().stringify()
   }
 }
+
+///|
+fn decisions_to_json(decisions : Array[OutputDecision]) -> Json {
+  let result : Array[Json] = []
+  for decision in decisions {
+    result.push(
+      Json::object({
+        "output": Json::string(decision.output),
+        "value": value_to_json(decision.value),
+        "priority": Json::number(decision.priority.to_double()),
+        "ruleId": Json::string(decision.rule_id),
+      }),
+    )
+  }
+  Json::array(result)
+}
+
+///|
+fn regression_vectors_to_json(vectors : Array[RegressionVector]) -> Json {
+  let result : Array[Json] = []
+  for vector in vectors {
+    result.push(
+      Json::object({
+        "id": Json::string(vector.id),
+        "source": Json::string(vector.source.render()),
+        "reason": Json::string(vector.reason),
+        "input": input_to_json(vector.input),
+        "expectedDecisions": decisions_to_json(vector.expected_decisions),
+      }),
+    )
+  }
+  Json::array(result)
+}
+
+///|
+fn rule_impacts_to_json(impacts : Array[RuleImpact], total_cases : Int) -> Json {
+  let result : Array[Json] = []
+  for impact in rank_rule_impacts(impacts) {
+    let example = match impact.first_counterexample {
+      Some(input) => input_to_json(input)
+      None => Json::null()
+    }
+    result.push(
+      Json::object({
+        "ruleId": Json::string(impact.rule_id),
+        "ruleName": Json::string(impact.rule_name),
+        "changedCases": Json::number(impact.changed_cases.to_double()),
+        "impactPercent": Json::number(
+          impact.impact_percent(total_cases).to_double(),
+        ),
+        "impactBand": Json::string(impact.impact_band(total_cases).render()),
+        "decisionChanges": Json::number(impact.decision_changes.to_double()),
+        "provenanceChanges": Json::number(impact.provenance_changes.to_double()),
+        "affectedOutputs": strings_to_json(impact.affected_outputs),
+        "firstCounterexample": example,
+      }),
+    )
+  }
+  Json::array(result)
+}
+
+///|
+fn gate_violations_to_json(violations : Array[GateViolation]) -> Json {
+  let result : Array[Json] = []
+  for violation in violations {
+    result.push(
+      Json::object({
+        "code": Json::string(violation.code),
+        "message": Json::string(violation.message),
+        "actual": Json::number(violation.actual.to_double()),
+        "expected": Json::number(violation.expected.to_double()),
+      }),
+    )
+  }
+  Json::array(result)
+}
+
+///|
+pub fn release_evidence_to_json(
+  policy : Policy,
+  gate : QualityGate,
+  maximum_vectors? : Int = 50,
+) -> Json {
+  let report = analyze(policy)
+  let impacts = analyze_rule_impacts(policy)
+  let gate_result = evaluate_quality_gate(report, impacts, gate)
+  let vectors = generate_regression_vectors(report, impacts, maximum_vectors~)
+  let impact_summary = summarize_rule_impacts(impacts)
+  let hottest_rule = match impact_summary.hottest_rule_id {
+    Some(id) => Json::string(id)
+    None => Json::null()
+  }
+  Json::object({
+    "schemaVersion": Json::string("rulescope.release-evidence/v1"),
+    "policy": Json::string(policy.name),
+    "policyVersion": Json::string(policy.version),
+    "qualityGate": Json::object({
+      "name": Json::string(gate_result.gate_name),
+      "passed": Json::boolean(gate_result.passed),
+      "riskScore": Json::number(gate_result.risk_score.to_double()),
+      "violations": gate_violations_to_json(gate_result.violations),
+    }),
+    "impactSummary": Json::object({
+      "totalRules": Json::number(impact_summary.total_rules.to_double()),
+      "relevantRules": Json::number(
+        impact_summary.behaviorally_relevant_rules.to_double(),
+      ),
+      "dormantRules": Json::number(impact_summary.dormant_rules.to_double()),
+      "hottestRuleId": hottest_rule,
+      "hottestChangedCases": Json::number(
+        impact_summary.hottest_changed_cases.to_double(),
+      ),
+    }),
+    "analysis": report.to_json(),
+    "ruleImpacts": rule_impacts_to_json(impacts, report.stats.candidate_cases),
+    "regressionVectors": regression_vectors_to_json(vectors),
+  })
+}
+
+///|
+pub fn render_release_evidence(
+  policy : Policy,
+  gate : QualityGate,
+  maximum_vectors? : Int = 50,
+  pretty? : Bool = true,
+) -> String {
+  let evidence = release_evidence_to_json(policy, gate, maximum_vectors~)
+  if pretty {
+    evidence.stringify(indent=2)
+  } else {
+    evidence.stringify()
+  }
+}

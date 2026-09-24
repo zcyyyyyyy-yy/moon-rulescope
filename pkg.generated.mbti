@@ -76,7 +76,11 @@ pub fn rank_rule_impacts(Array[RuleImpact]) -> Array[RuleImpact]
 
 pub fn redundant_predicate_policy() -> Policy
 
+pub fn release_evidence_to_json(Policy, QualityGate, maximum_vectors? : Int) -> Json
+
 pub fn render_regression_suite(String, Array[RegressionVector]) -> String
+
+pub fn render_release_evidence(Policy, QualityGate, maximum_vectors? : Int, pretty? : Bool) -> String
 
 pub fn render_rule_impact_report(Policy, Array[RuleImpact]) -> String
 
