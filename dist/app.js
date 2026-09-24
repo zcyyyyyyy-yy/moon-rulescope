@@ -161,6 +161,9 @@ const elements = {
   tabIssueCount: document.querySelector("#tab-issue-count"),
   issueList: document.querySelector("#issue-list"),
   coverageList: document.querySelector("#coverage-list"),
+  impactSummary: document.querySelector("#impact-summary"),
+  impactSortButton: document.querySelector("#impact-sort-button"),
+  exportVectorsButton: document.querySelector("#export-vectors-button"),
   traceInputs: document.querySelector("#trace-inputs"),
   traceButton: document.querySelector("#trace-button"),
   traceOutput: document.querySelector("#trace-output"),
@@ -187,6 +190,7 @@ const state = {
   report: null,
   selectedIssue: null,
   severity: "all",
+  coverageOrder: "declaration",
 };
 
 class PolicySyntaxError extends Error {
@@ -541,6 +545,14 @@ function evaluateStrictGate(report) {
   return { passed: violations.length === 0, violations };
 }
 
+function impactBand(changedCases, totalCases) {
+  if (changedCases === 0) return "dormant";
+  const percent = totalCases ? Math.floor((changedCases / totalCases) * 100) : 0;
+  if (percent >= 50) return "high";
+  if (percent >= 15) return "medium";
+  return "low";
+}
+
 function cloneInput(input) {
   return Object.fromEntries(Object.entries(input));
 }
@@ -772,18 +784,34 @@ function renderIssues() {
 function renderCoverage() {
   if (!state.report) return;
   const total = state.report.evaluations.length || 1;
-  elements.coverageList.innerHTML = state.policy.rules
+  const impacts = new Map(state.report.impacts.map((impact) => [impact.ruleId, impact]));
+  const dormant = state.report.impacts.filter((impact) => impact.changedCases === 0).length;
+  const hottest = [...state.report.impacts].sort((left, right) => right.changedCases - left.changedCases)[0];
+  elements.impactSummary.textContent = hottest
+    ? `热点 ${hottest.ruleId} · ${hottest.changedCases} 条影响路径 · ${dormant} 条休眠规则`
+    : "没有可分析规则";
+  const rules = state.coverageOrder === "impact"
+    ? [...state.policy.rules].sort(
+        (left, right) => (impacts.get(right.id)?.changedCases || 0) - (impacts.get(left.id)?.changedCases || 0),
+      )
+    : state.policy.rules;
+  elements.impactSortButton.textContent = state.coverageOrder === "impact" ? "恢复声明顺序" : "按影响排序";
+  elements.coverageList.innerHTML = rules
     .map((rule) => {
       const matchesCount = state.report.matchCount.get(rule.id) || 0;
       const percentage = Math.round((matchesCount / total) * 100);
+      const impact = impacts.get(rule.id);
+      const changedCases = impact?.changedCases || 0;
+      const band = impactBand(changedCases, total);
       return `
         <div class="coverage-row ${matchesCount === 0 ? "unreachable" : ""}">
           <div class="coverage-name">
             <strong>${escapeHtml(rule.name)}</strong>
-            <span>${rule.id} · P${rule.priority} · ${matchesCount} MATCHES · ${state.report.impacts.find((impact) => impact.ruleId === rule.id)?.changedCases || 0} IMPACTED</span>
+            <span>${rule.id} · P${rule.priority} · ${matchesCount} MATCHES · ${changedCases} IMPACTED</span>
           </div>
           <div class="coverage-bar"><i style="width: ${Math.max(percentage, matchesCount ? 2 : 0)}%"></i></div>
           <span class="coverage-percent">${percentage}%</span>
+          <span class="impact-badge ${band}">${band}</span>
         </div>`;
     })
     .join("");
@@ -1012,17 +1040,61 @@ function reportAsJson() {
   };
 }
 
-function downloadJsonReport() {
-  const report = reportAsJson();
-  if (!report) return;
-  const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+function buildRegressionVectors() {
+  if (!state.report) return [];
+  const vectors = [];
+  const seen = new Set();
+  const append = (input, reason, source) => {
+    if (!input || vectors.length >= 50) return;
+    const key = JSON.stringify(input);
+    if (seen.has(key)) return;
+    seen.add(key);
+    const evaluation = state.report.evaluations.find((item) => sameValue(item.input, input));
+    vectors.push({
+      id: `RV${vectors.length + 1}`,
+      source,
+      reason,
+      input,
+      expectedDecisions: evaluation?.decisions || {},
+    });
+  };
+  state.report.issues.forEach((issue) =>
+    append(issue.counterexample, `${issue.code}: ${issue.title}`, "issue-evidence"),
+  );
+  state.report.impacts.forEach((impact) =>
+    append(impact.firstCounterexample, `${impact.ruleId}: ${impact.ruleName}`, "rule-impact"),
+  );
+  return vectors;
+}
+
+function downloadJson(filename, payload, confirmation) {
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `${state.sampleKey}-rulescope-report.json`;
+  link.download = filename;
   link.click();
   URL.revokeObjectURL(url);
-  showToast("JSON 取证报告已导出");
+  showToast(confirmation);
+}
+
+function downloadJsonReport() {
+  const report = reportAsJson();
+  if (!report) return;
+  downloadJson(`${state.sampleKey}-rulescope-report.json`, report, "JSON 取证报告已导出");
+}
+
+function downloadRegressionVectors() {
+  const payload = {
+    schemaVersion: "rulescope.regression-vectors/v1",
+    policy: state.policy.name,
+    vectors: buildRegressionVectors(),
+  };
+  downloadJson(
+    `${state.sampleKey}-regression-vectors.json`,
+    payload,
+    `已导出 ${payload.vectors.length} 条回归向量`,
+  );
 }
 
 function loadSample(key) {
@@ -1064,6 +1136,11 @@ elements.resetButton.addEventListener("click", () => loadSample(state.sampleKey)
 elements.traceButton.addEventListener("click", renderTrace);
 elements.shareButton.addEventListener("click", () => copyText(reportAsMarkdown(), "Markdown 报告已复制"));
 elements.exportJsonButton.addEventListener("click", downloadJsonReport);
+elements.impactSortButton.addEventListener("click", () => {
+  state.coverageOrder = state.coverageOrder === "impact" ? "declaration" : "impact";
+  renderCoverage();
+});
+elements.exportVectorsButton.addEventListener("click", downloadRegressionVectors);
 elements.copyCounterexample.addEventListener("click", () => {
   if (state.selectedIssue) {
     copyText(JSON.stringify(state.selectedIssue.counterexample, null, 2), "反例 JSON 已复制");

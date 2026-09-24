@@ -47,6 +47,95 @@ const _M0FPB19int__to__string__js = (x, radix) => {
 };
 const _M0MPB7JSArray4push = (arr, val) => { arr.push(val); };
 const _M0MPB7JSArray4copy = (arr) => arr.slice(0);
+function _M0TP29rulescope9rulescope15CandidateDomain(param0, param1) {
+  this.field = param0;
+  this.values = param1;
+}
+function _M0TP29rulescope9rulescope12RuleCoverage(param0, param1, param2, param3) {
+  this.rule_id = param0;
+  this.match_count = param1;
+  this.win_count = param2;
+  this.total_cases = param3;
+}
+function _M0TP29rulescope9rulescope13AnalysisStats(param0, param1, param2, param3, param4, param5) {
+  this.candidate_cases = param0;
+  this.covered_cases = param1;
+  this.uncovered_cases = param2;
+  this.conflict_count = param3;
+  this.warning_count = param4;
+  this.information_count = param5;
+}
+function _M0TP29rulescope9rulescope7Binding(param0, param1) {
+  this.field = param0;
+  this.value = param1;
+}
+function _M0TP29rulescope9rulescope9InputCase(param0) {
+  this.bindings = param0;
+}
+function _M0TP29rulescope9rulescope17DecisionCandidate(param0, param1, param2, param3, param4) {
+  this.output = param0;
+  this.value = param1;
+  this.priority = param2;
+  this.rule_id = param3;
+  this.rule_order = param4;
+}
+function _M0TP29rulescope9rulescope9RuleMatch(param0, param1, param2, param3) {
+  this.rule_id = param0;
+  this.rule_name = param1;
+  this.matched = param2;
+  this.failed_predicates = param3;
+}
+function _M0TP29rulescope9rulescope14OutputDecision(param0, param1, param2, param3) {
+  this.output = param0;
+  this.value = param1;
+  this.priority = param2;
+  this.rule_id = param3;
+}
+function _M0TP29rulescope9rulescope10Evaluation(param0, param1, param2, param3) {
+  this.input = param0;
+  this.matches = param1;
+  this.decisions = param2;
+  this.matched_rule_ids = param3;
+}
+function _M0TP29rulescope9rulescope5Issue(param0, param1, param2, param3, param4, param5, param6, param7, param8) {
+  this.code = param0;
+  this.severity = param1;
+  this.kind = param2;
+  this.title = param3;
+  this.description = param4;
+  this.rule_ids = param5;
+  this.counterexample = param6;
+  this.evidence = param7;
+  this.recommendation = param8;
+}
+function _M0TP29rulescope9rulescope12EvidenceStep(param0, param1, param2) {
+  this.rule_id = param0;
+  this.title = param1;
+  this.detail = param2;
+}
+function _M0TP29rulescope9rulescope14AnalysisReport(param0, param1, param2, param3, param4) {
+  this.policy_name = param0;
+  this.issues = param1;
+  this.coverage = param2;
+  this.evaluations = param3;
+  this.stats = param4;
+}
+function _M0TP29rulescope9rulescope20BehaviorChangeRecord(param0, param1, param2, param3, param4, param5, param6) {
+  this.input = param0;
+  this.output = param1;
+  this.before = param2;
+  this.after = param3;
+  this.before_rule = param4;
+  this.after_rule = param5;
+  this.kind = param6;
+}
+function _M0TP29rulescope9rulescope12BehaviorDiff(param0, param1, param2, param3, param4) {
+  this.before_name = param0;
+  this.after_name = param1;
+  this.checked_cases = param2;
+  this.changes = param3;
+  this.truncated = param4;
+}
 function _M0TP29rulescope9rulescope5Field(param0, param1, param2, param3) {
   this.name = param0;
   this.kind = param1;
@@ -81,177 +170,88 @@ function _M0TP29rulescope9rulescope6Policy(param0, param1, param2, param3, param
   this.rules = param3;
   this.description = param4;
 }
-function _M0TP29rulescope9rulescope9InputCase(param0) {
-  this.bindings = param0;
-}
-function _M0TP29rulescope9rulescope7Binding(param0, param1) {
-  this.field = param0;
-  this.value = param1;
-}
-function _M0TP29rulescope9rulescope20BehaviorChangeRecord(param0, param1, param2, param3, param4, param5, param6) {
-  this.input = param0;
-  this.output = param1;
-  this.before = param2;
-  this.after = param3;
-  this.before_rule = param4;
-  this.after_rule = param5;
-  this.kind = param6;
-}
-function _M0TP29rulescope9rulescope17DecisionCandidate(param0, param1, param2, param3, param4) {
-  this.output = param0;
-  this.value = param1;
-  this.priority = param2;
-  this.rule_id = param3;
-  this.rule_order = param4;
-}
-function _M0TP29rulescope9rulescope9RuleMatch(param0, param1, param2, param3) {
-  this.rule_id = param0;
-  this.rule_name = param1;
-  this.matched = param2;
-  this.failed_predicates = param3;
-}
-function _M0TP29rulescope9rulescope14OutputDecision(param0, param1, param2, param3) {
-  this.output = param0;
-  this.value = param1;
-  this.priority = param2;
-  this.rule_id = param3;
-}
-function _M0TP29rulescope9rulescope10Evaluation(param0, param1, param2, param3) {
-  this.input = param0;
-  this.matches = param1;
-  this.decisions = param2;
-  this.matched_rule_ids = param3;
-}
-function _M0TP29rulescope9rulescope15CandidateDomain(param0, param1) {
-  this.field = param0;
-  this.values = param1;
-}
-function _M0TP29rulescope9rulescope12BehaviorDiff(param0, param1, param2, param3, param4) {
-  this.before_name = param0;
-  this.after_name = param1;
-  this.checked_cases = param2;
-  this.changes = param3;
-  this.truncated = param4;
-}
-function _M0TP29rulescope9rulescope12RuleCoverage(param0, param1, param2, param3) {
-  this.rule_id = param0;
-  this.match_count = param1;
-  this.win_count = param2;
-  this.total_cases = param3;
-}
-function _M0TP29rulescope9rulescope13AnalysisStats(param0, param1, param2, param3, param4, param5) {
-  this.candidate_cases = param0;
-  this.covered_cases = param1;
-  this.uncovered_cases = param2;
-  this.conflict_count = param3;
-  this.warning_count = param4;
-  this.information_count = param5;
-}
-function _M0TP29rulescope9rulescope5Issue(param0, param1, param2, param3, param4, param5, param6, param7, param8) {
-  this.code = param0;
-  this.severity = param1;
-  this.kind = param2;
-  this.title = param3;
-  this.description = param4;
-  this.rule_ids = param5;
-  this.counterexample = param6;
-  this.evidence = param7;
-  this.recommendation = param8;
-}
-function _M0TP29rulescope9rulescope12EvidenceStep(param0, param1, param2) {
-  this.rule_id = param0;
-  this.title = param1;
-  this.detail = param2;
-}
-function _M0TP29rulescope9rulescope14AnalysisReport(param0, param1, param2, param3, param4) {
-  this.policy_name = param0;
-  this.issues = param1;
-  this.coverage = param2;
-  this.evaluations = param3;
-  this.stats = param4;
-}
 const _M0FP092moonbitlang_2fcore_2fbuiltin_2fStringBuilder_24as_24_40moonbitlang_2fcore_2fbuiltin_2eLogger = { method_0: _M0IPB13StringBuilderPB6Logger13write__string, method_1: _M0IP016_24default__implPB6Logger16write__substringGRPB13StringBuilderE, method_2: _M0IPB13StringBuilderPB6Logger11write__view, method_3: _M0IPB13StringBuilderPB6Logger11write__char, method_4: _M0IP016_24default__implPB6Logger28write__string__interpolationGRPB13StringBuilderE, method_5: _M0IP016_24default__implPB6Logger5writeGRPB13StringBuilderE };
-const _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1677 = new _M0TP29rulescope9rulescope17ExplorationConfig(12000, true, true);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1700 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 50000);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1701 = new _M0DTP29rulescope9rulescope5Value9BoolValue(false);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1702 = new _M0DTP29rulescope9rulescope5Value8IntValue(500);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1703 = new _M0DTP29rulescope9rulescope5Value9TextValue("reject");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1704 = new _M0DTP29rulescope9rulescope5Value9TextValue("director");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1705 = new _M0DTP29rulescope9rulescope5Value8IntValue(3000);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1706 = new _M0DTP29rulescope9rulescope5Value9TextValue("approve");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1707 = new _M0DTP29rulescope9rulescope5Value9TextValue("equipment");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1708 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1709 = new _M0DTP29rulescope9rulescope5Value9TextValue("review");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1710 = new _M0DTP29rulescope9rulescope5Value9TextValue("manager");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1711 = new _M0DTP29rulescope9rulescope5Value9TextValue("travel");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1712 = new _M0DTP29rulescope9rulescope5Value8IntValue(5000);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1713 = new _M0DTP29rulescope9rulescope5Value9TextValue("approve");
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1714 = new _M0DTP29rulescope9rulescope5Value8IntValue(800);
-const _M0FP29rulescope9rulescope15expense__policyN6constrS1715 = new _M0DTP29rulescope9rulescope5Value9TextValue("approve");
-const _M0FP29rulescope9rulescope18clean__age__policyN6constrS1745 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 120);
-const _M0FP29rulescope9rulescope18clean__age__policyN6constrS1746 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope18clean__age__policyN6constrS1747 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
-const _M0FP29rulescope9rulescope18clean__age__policyN6constrS1748 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope18clean__age__policyN6constrS1749 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1716 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100);
-const _M0FP29rulescope9rulescope15content__policyN6constrS1717 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope15content__policyN6constrS1718 = new _M0DTP29rulescope9rulescope5Value9TextValue("adult");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1719 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1720 = new _M0DTP29rulescope9rulescope5Value9TextValue("premium");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1721 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1722 = new _M0DTP29rulescope9rulescope5Value9TextValue("eu");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1723 = new _M0DTP29rulescope9rulescope5Value9TextValue("guest");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1724 = new _M0DTP29rulescope9rulescope5Value9TextValue("verify");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1725 = new _M0DTP29rulescope9rulescope5Value9TextValue("general");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1726 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
-const _M0FP29rulescope9rulescope15content__policyN6constrS1727 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope15content__policyN6constrS1728 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1680 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1681 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 5000);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1682 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 30);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1683 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1684 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1685 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1686 = new _M0DTP29rulescope9rulescope5Value9TextValue("vip");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1687 = new _M0DTP29rulescope9rulescope5Value8IntValue(500);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1688 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1689 = new _M0DTP29rulescope9rulescope5Value9TextValue("eu");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1690 = new _M0DTP29rulescope9rulescope5Value9BoolValue(true);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1691 = new _M0DTP29rulescope9rulescope5Value9TextValue("review");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1692 = new _M0DTP29rulescope9rulescope5Value9TextValue("vip");
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1693 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1694 = new _M0DTP29rulescope9rulescope5Value8IntValue(20);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1695 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1696 = new _M0DTP29rulescope9rulescope5Value8IntValue(10);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1697 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1698 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope16checkout__policyN6constrS1699 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
-const _M0FP29rulescope9rulescope21candidates__for__kindN6constrS1675 = new _M0DTP29rulescope9rulescope5Value9BoolValue(false);
-const _M0FP29rulescope9rulescope21candidates__for__kindN6constrS1676 = new _M0DTP29rulescope9rulescope5Value9BoolValue(true);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1729 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1730 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100000);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1731 = new _M0DTP29rulescope9rulescope5Value9BoolValue(false);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1732 = new _M0DTP29rulescope9rulescope5Value9TextValue("manual");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1733 = new _M0DTP29rulescope9rulescope5Value9TextValue("major");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1734 = new _M0DTP29rulescope9rulescope5Value8IntValue(20000);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1735 = new _M0DTP29rulescope9rulescope5Value9TextValue("reject");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1736 = new _M0DTP29rulescope9rulescope5Value8IntValue(70);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1737 = new _M0DTP29rulescope9rulescope5Value8IntValue(10000);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1738 = new _M0DTP29rulescope9rulescope5Value9TextValue("manual");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1739 = new _M0DTP29rulescope9rulescope5Value8IntValue(5000);
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1740 = new _M0DTP29rulescope9rulescope5Value9TextValue("accept");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1741 = new _M0DTP29rulescope9rulescope5Value9TextValue("major");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1742 = new _M0DTP29rulescope9rulescope5Value9TextValue("high");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1743 = new _M0DTP29rulescope9rulescope5Value9TextValue("clear");
-const _M0FP29rulescope9rulescope17insurance__policyN6constrS1744 = new _M0DTP29rulescope9rulescope5Value9TextValue("low");
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1770 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 120);
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1771 = new _M0DTP29rulescope9rulescope5Value8IntValue(16);
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1772 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1773 = new _M0DTP29rulescope9rulescope5Value8IntValue(16);
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1774 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1775 = new _M0DTP29rulescope9rulescope5Value9TextValue("review");
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1776 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
-const _M0FP29rulescope9rulescope15age__policy__v2N6constrS1777 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1956 = new _M0TP29rulescope9rulescope17ExplorationConfig(12000, true, true);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1979 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 50000);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1980 = new _M0DTP29rulescope9rulescope5Value9BoolValue(false);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1981 = new _M0DTP29rulescope9rulescope5Value8IntValue(500);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1982 = new _M0DTP29rulescope9rulescope5Value9TextValue("reject");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1983 = new _M0DTP29rulescope9rulescope5Value9TextValue("director");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1984 = new _M0DTP29rulescope9rulescope5Value8IntValue(3000);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1985 = new _M0DTP29rulescope9rulescope5Value9TextValue("approve");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1986 = new _M0DTP29rulescope9rulescope5Value9TextValue("equipment");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1987 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1988 = new _M0DTP29rulescope9rulescope5Value9TextValue("review");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1989 = new _M0DTP29rulescope9rulescope5Value9TextValue("manager");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1990 = new _M0DTP29rulescope9rulescope5Value9TextValue("travel");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1991 = new _M0DTP29rulescope9rulescope5Value8IntValue(5000);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1992 = new _M0DTP29rulescope9rulescope5Value9TextValue("approve");
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1993 = new _M0DTP29rulescope9rulescope5Value8IntValue(800);
+const _M0FP29rulescope9rulescope15expense__policyN6constrS1994 = new _M0DTP29rulescope9rulescope5Value9TextValue("approve");
+const _M0FP29rulescope9rulescope18clean__age__policyN6constrS2024 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 120);
+const _M0FP29rulescope9rulescope18clean__age__policyN6constrS2025 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope18clean__age__policyN6constrS2026 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
+const _M0FP29rulescope9rulescope18clean__age__policyN6constrS2027 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope18clean__age__policyN6constrS2028 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0FP29rulescope9rulescope15content__policyN6constrS1995 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100);
+const _M0FP29rulescope9rulescope15content__policyN6constrS1996 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope15content__policyN6constrS1997 = new _M0DTP29rulescope9rulescope5Value9TextValue("adult");
+const _M0FP29rulescope9rulescope15content__policyN6constrS1998 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
+const _M0FP29rulescope9rulescope15content__policyN6constrS1999 = new _M0DTP29rulescope9rulescope5Value9TextValue("premium");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2000 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2001 = new _M0DTP29rulescope9rulescope5Value9TextValue("eu");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2002 = new _M0DTP29rulescope9rulescope5Value9TextValue("guest");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2003 = new _M0DTP29rulescope9rulescope5Value9TextValue("verify");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2004 = new _M0DTP29rulescope9rulescope5Value9TextValue("general");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2005 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0FP29rulescope9rulescope15content__policyN6constrS2006 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope15content__policyN6constrS2007 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1959 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1960 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 5000);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1961 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 30);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1962 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1963 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1964 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1965 = new _M0DTP29rulescope9rulescope5Value9TextValue("vip");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1966 = new _M0DTP29rulescope9rulescope5Value8IntValue(500);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1967 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1968 = new _M0DTP29rulescope9rulescope5Value9TextValue("eu");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1969 = new _M0DTP29rulescope9rulescope5Value9BoolValue(true);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1970 = new _M0DTP29rulescope9rulescope5Value9TextValue("review");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1971 = new _M0DTP29rulescope9rulescope5Value9TextValue("vip");
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1972 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1973 = new _M0DTP29rulescope9rulescope5Value8IntValue(20);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1974 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1975 = new _M0DTP29rulescope9rulescope5Value8IntValue(10);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1976 = new _M0DTP29rulescope9rulescope5Value8IntValue(1000);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1977 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope16checkout__policyN6constrS1978 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
+const _M0FP29rulescope9rulescope21candidates__for__kindN6constrS1954 = new _M0DTP29rulescope9rulescope5Value9BoolValue(false);
+const _M0FP29rulescope9rulescope21candidates__for__kindN6constrS1955 = new _M0DTP29rulescope9rulescope5Value9BoolValue(true);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2008 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2009 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 100000);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2010 = new _M0DTP29rulescope9rulescope5Value9BoolValue(false);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2011 = new _M0DTP29rulescope9rulescope5Value9TextValue("manual");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2012 = new _M0DTP29rulescope9rulescope5Value9TextValue("major");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2013 = new _M0DTP29rulescope9rulescope5Value8IntValue(20000);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2014 = new _M0DTP29rulescope9rulescope5Value9TextValue("reject");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2015 = new _M0DTP29rulescope9rulescope5Value8IntValue(70);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2016 = new _M0DTP29rulescope9rulescope5Value8IntValue(10000);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2017 = new _M0DTP29rulescope9rulescope5Value9TextValue("manual");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2018 = new _M0DTP29rulescope9rulescope5Value8IntValue(5000);
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2019 = new _M0DTP29rulescope9rulescope5Value9TextValue("accept");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2020 = new _M0DTP29rulescope9rulescope5Value9TextValue("major");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2021 = new _M0DTP29rulescope9rulescope5Value9TextValue("high");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2022 = new _M0DTP29rulescope9rulescope5Value9TextValue("clear");
+const _M0FP29rulescope9rulescope17insurance__policyN6constrS2023 = new _M0DTP29rulescope9rulescope5Value9TextValue("low");
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2049 = new _M0DTP29rulescope9rulescope9FieldKind7Integer(0, 120);
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2050 = new _M0DTP29rulescope9rulescope5Value8IntValue(16);
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2051 = new _M0DTP29rulescope9rulescope5Value9TextValue("deny");
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2052 = new _M0DTP29rulescope9rulescope5Value8IntValue(16);
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2053 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2054 = new _M0DTP29rulescope9rulescope5Value9TextValue("review");
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2055 = new _M0DTP29rulescope9rulescope5Value8IntValue(18);
+const _M0FP29rulescope9rulescope15age__policy__v2N6constrS2056 = new _M0DTP29rulescope9rulescope5Value9TextValue("allow");
 function _M0MPB13StringBuilder13write__objectGsE(self, obj) {
   _M0IP016_24default__implPB4Show6outputGsE(obj, { self: self, method_table: _M0FP092moonbitlang_2fcore_2fbuiltin_2fStringBuilder_24as_24_40moonbitlang_2fcore_2fbuiltin_2eLogger });
 }
@@ -420,103 +420,103 @@ function _M0IPC15array5ArrayPB2Eq5equalGRP29rulescope9rulescope6ActionE(self, ot
     return false;
   }
 }
-function _M0IP29rulescope9rulescope9PredicatePB2Eq5equal(_x_667, _x_668) {
-  return _x_667.field === _x_668.field && _M0IP29rulescope9rulescope9CompareOpPB2Eq5equal(_x_667.operator, _x_668.operator) && _M0IP29rulescope9rulescope5ValuePB2Eq5equal(_x_667.expected, _x_668.expected) && _x_667.source_line === _x_668.source_line;
+function _M0IP29rulescope9rulescope9PredicatePB2Eq5equal(_x_785, _x_786) {
+  return _x_785.field === _x_786.field && _M0IP29rulescope9rulescope9CompareOpPB2Eq5equal(_x_785.operator, _x_786.operator) && _M0IP29rulescope9rulescope5ValuePB2Eq5equal(_x_785.expected, _x_786.expected) && _x_785.source_line === _x_786.source_line;
 }
-function _M0IP29rulescope9rulescope5ValuePB2Eq5equal(_x_625, _x_626) {
-  switch (_x_625.$tag) {
+function _M0IP29rulescope9rulescope5ValuePB2Eq5equal(_x_743, _x_744) {
+  switch (_x_743.$tag) {
     case 0: {
-      const _IntValue = _x_625;
-      const _$42$x0_627 = _IntValue._0;
-      if (_x_626.$tag === 0) {
-        const _IntValue$2 = _x_626;
-        const _$42$y0_628 = _IntValue$2._0;
-        return _$42$x0_627 === _$42$y0_628;
+      const _IntValue = _x_743;
+      const _$42$x0_745 = _IntValue._0;
+      if (_x_744.$tag === 0) {
+        const _IntValue$2 = _x_744;
+        const _$42$y0_746 = _IntValue$2._0;
+        return _$42$x0_745 === _$42$y0_746;
       } else {
         return false;
       }
     }
     case 1: {
-      const _BoolValue = _x_625;
-      const _$42$x0_629 = _BoolValue._0;
-      if (_x_626.$tag === 1) {
-        const _BoolValue$2 = _x_626;
-        const _$42$y0_630 = _BoolValue$2._0;
-        return _$42$x0_629 === _$42$y0_630;
+      const _BoolValue = _x_743;
+      const _$42$x0_747 = _BoolValue._0;
+      if (_x_744.$tag === 1) {
+        const _BoolValue$2 = _x_744;
+        const _$42$y0_748 = _BoolValue$2._0;
+        return _$42$x0_747 === _$42$y0_748;
       } else {
         return false;
       }
     }
     default: {
-      const _TextValue = _x_625;
-      const _$42$x0_631 = _TextValue._0;
-      if (_x_626.$tag === 2) {
-        const _TextValue$2 = _x_626;
-        const _$42$y0_632 = _TextValue$2._0;
-        return _$42$x0_631 === _$42$y0_632;
+      const _TextValue = _x_743;
+      const _$42$x0_749 = _TextValue._0;
+      if (_x_744.$tag === 2) {
+        const _TextValue$2 = _x_744;
+        const _$42$y0_750 = _TextValue$2._0;
+        return _$42$x0_749 === _$42$y0_750;
       } else {
         return false;
       }
     }
   }
 }
-function _M0IP29rulescope9rulescope6ActionPB2Eq5equal(_x_595, _x_596) {
-  return _x_595.output === _x_596.output && _M0IP29rulescope9rulescope5ValuePB2Eq5equal(_x_595.value, _x_596.value) && _x_595.source_line === _x_596.source_line;
+function _M0IP29rulescope9rulescope6ActionPB2Eq5equal(_x_701, _x_702) {
+  return _x_701.output === _x_702.output && _M0IP29rulescope9rulescope5ValuePB2Eq5equal(_x_701.value, _x_702.value) && _x_701.source_line === _x_702.source_line;
 }
-function _M0IP29rulescope9rulescope9FieldRolePB2Eq5equal(_x_571, _x_572) {
-  if (_x_571 === 0) {
-    if (_x_572 === 0) {
+function _M0IP29rulescope9rulescope9FieldRolePB2Eq5equal(_x_671, _x_672) {
+  if (_x_671 === 0) {
+    if (_x_672 === 0) {
       return true;
     } else {
       return false;
     }
   } else {
-    if (_x_572 === 1) {
+    if (_x_672 === 1) {
       return true;
     } else {
       return false;
     }
   }
 }
-function _M0IP29rulescope9rulescope9CompareOpPB2Eq5equal(_x_565, _x_566) {
-  switch (_x_565) {
+function _M0IP29rulescope9rulescope9CompareOpPB2Eq5equal(_x_665, _x_666) {
+  switch (_x_665) {
     case 0: {
-      if (_x_566 === 0) {
+      if (_x_666 === 0) {
         return true;
       } else {
         return false;
       }
     }
     case 1: {
-      if (_x_566 === 1) {
+      if (_x_666 === 1) {
         return true;
       } else {
         return false;
       }
     }
     case 2: {
-      if (_x_566 === 2) {
+      if (_x_666 === 2) {
         return true;
       } else {
         return false;
       }
     }
     case 3: {
-      if (_x_566 === 3) {
+      if (_x_666 === 3) {
         return true;
       } else {
         return false;
       }
     }
     case 4: {
-      if (_x_566 === 4) {
+      if (_x_666 === 4) {
         return true;
       } else {
         return false;
       }
     }
     default: {
-      if (_x_566 === 5) {
+      if (_x_666 === 5) {
         return true;
       } else {
         return false;
@@ -750,473 +750,20 @@ function _M0MP29rulescope9rulescope9FieldKind8contains(self, value) {
     }
   }
 }
-function _M0FP29rulescope9rulescope12input__field(name, kind, line) {
-  return new _M0TP29rulescope9rulescope5Field(name, kind, 0, line);
-}
-function _M0FP29rulescope9rulescope13output__field(name, kind, line) {
-  return new _M0TP29rulescope9rulescope5Field(name, kind, 1, line);
-}
-function _M0FP29rulescope9rulescope9predicate(field, operator, expected, line) {
-  return new _M0TP29rulescope9rulescope9Predicate(field, operator, expected, line);
-}
-function _M0FP29rulescope9rulescope6action(output, value, line) {
-  return new _M0TP29rulescope9rulescope6Action(output, value, line);
-}
-function _M0FP29rulescope9rulescope4rule(id, name, priority, predicates, actions) {
-  return new _M0TP29rulescope9rulescope4Rule(id, name, priority, predicates, actions, 0, [], true);
-}
-function _M0FP29rulescope9rulescope6policy(name, fields, rules) {
-  return new _M0TP29rulescope9rulescope6Policy(name, "1", fields, rules, "");
-}
-function _M0MP29rulescope9rulescope6Policy13input__fields(self) {
-  const _p = self.fields;
-  const _p$2 = [];
-  const _p$3 = _p.length;
-  let _tmp = 0;
-  while (true) {
-    const _p$4 = _tmp;
-    if (_p$4 < _p$3) {
-      const _p$5 = _p[_p$4];
-      if (_M0IP29rulescope9rulescope9FieldRolePB2Eq5equal(_p$5.role, 0)) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(_p$2, _p$5);
-      }
-      _tmp = _p$4 + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return _p$2;
-}
-function _M0MP29rulescope9rulescope6Policy14output__fields(self) {
-  const _p = self.fields;
-  const _p$2 = [];
-  const _p$3 = _p.length;
-  let _tmp = 0;
-  while (true) {
-    const _p$4 = _tmp;
-    if (_p$4 < _p$3) {
-      const _p$5 = _p[_p$4];
-      if (_M0IP29rulescope9rulescope9FieldRolePB2Eq5equal(_p$5.role, 1)) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(_p$2, _p$5);
-      }
-      _tmp = _p$4 + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return _p$2;
-}
-function _M0MP29rulescope9rulescope6Policy11find__field(self, name) {
-  const _bind = self.fields;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const field = _bind[_];
-      if (field.name === name) {
-        return field;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return undefined;
-}
-function _M0MP29rulescope9rulescope6Policy10find__rule(self, id) {
-  const _bind = self.rules;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const item = _bind[_];
-      if (item.id === id) {
-        return item;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return undefined;
-}
-function _M0MP29rulescope9rulescope9InputCase5empty() {
-  return new _M0TP29rulescope9rulescope9InputCase([]);
-}
-function _M0MP29rulescope9rulescope9InputCase3get(self, field) {
-  const _bind = self.bindings;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const binding = _bind[_];
-      if (binding.field === field) {
-        return binding.value;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return undefined;
-}
-function _M0MP29rulescope9rulescope9InputCase13with__binding(self, field, value) {
-  const result = _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(self.bindings);
-  let replaced = false;
-  let _tmp = 0;
-  while (true) {
-    const index = _tmp;
-    if (index < result.length) {
-      if (_M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(result, index).field === field) {
-        _M0MPC15array5Array3setGRP29rulescope9rulescope15CandidateDomainE(result, index, new _M0TP29rulescope9rulescope7Binding(field, value));
-        replaced = true;
-      }
-      _tmp = index + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  if (!replaced) {
-    _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(result, new _M0TP29rulescope9rulescope7Binding(field, value));
-  }
-  return new _M0TP29rulescope9rulescope9InputCase(result);
-}
-function _M0MP29rulescope9rulescope9InputCase6render(self) {
-  let rendered = "{";
-  let _tmp = 0;
-  while (true) {
-    const index = _tmp;
-    if (index < self.bindings.length) {
-      if (index > 0) {
-        rendered = `${rendered}, `;
-      }
-      const binding = _M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(self.bindings, index);
-      rendered = `${rendered}${binding.field}: ${_M0MP29rulescope9rulescope5Value14render__quoted(binding.value)}`;
-      _tmp = index + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return `${rendered}}`;
-}
-function _M0FP29rulescope9rulescope22diff__contains__string(values, candidate) {
-  const _bind = values.length;
+function _M0FP29rulescope9rulescope19append__all__issues(target, source) {
+  const _bind = source.length;
   let _tmp = 0;
   while (true) {
     const _ = _tmp;
     if (_ < _bind) {
-      const value = values[_];
-      if (value === candidate) {
-        return true;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return false;
-}
-function _M0MP29rulescope9rulescope10Evaluation13decision__for(self, output) {
-  const _bind = self.decisions;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const decision = _bind[_];
-      if (decision.output === output) {
-        return decision;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return undefined;
-}
-function _M0FP29rulescope9rulescope21append__case__changes(before, after, changes, maximum_changes) {
-  const outputs = [];
-  const _bind = before.decisions;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const decision = _bind[_];
-      if (!_M0FP29rulescope9rulescope22diff__contains__string(outputs, decision.output)) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(outputs, decision.output);
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const _bind$3 = after.decisions;
-  const _bind$4 = _bind$3.length;
-  let _tmp$2 = 0;
-  while (true) {
-    const _ = _tmp$2;
-    if (_ < _bind$4) {
-      const decision = _bind$3[_];
-      if (!_M0FP29rulescope9rulescope22diff__contains__string(outputs, decision.output)) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(outputs, decision.output);
-      }
-      _tmp$2 = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const _bind$5 = outputs.length;
-  let _tmp$3 = 0;
-  while (true) {
-    const _ = _tmp$3;
-    if (_ < _bind$5) {
-      const output = outputs[_];
-      if (changes.length >= maximum_changes) {
-        return undefined;
-      }
-      const left = _M0MP29rulescope9rulescope10Evaluation13decision__for(before, output);
-      const right = _M0MP29rulescope9rulescope10Evaluation13decision__for(after, output);
-      if (left === undefined) {
-        if (right === undefined) {
-        } else {
-          const _Some = right;
-          const _next = _Some;
-          _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, undefined, _next.value, undefined, _next.rule_id, 0));
-        }
-      } else {
-        const _Some = left;
-        const _previous = _Some;
-        if (right === undefined) {
-          _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, _previous.value, undefined, _previous.rule_id, undefined, 1));
-        } else {
-          const _Some$2 = right;
-          const _next = _Some$2;
-          if (_M0IP016_24default__implPB2Eq10not__equalGRP29rulescope9rulescope5ValueE(_previous.value, _next.value)) {
-            _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, _previous.value, _next.value, _previous.rule_id, _next.rule_id, 2));
-          } else {
-            const _p = _previous.rule_id;
-            const _p$2 = _next.rule_id;
-            if (!(_p === _p$2)) {
-              _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, _previous.value, _next.value, _previous.rule_id, _next.rule_id, 3));
-            }
-          }
-        }
-      }
-      _tmp$3 = _ + 1 | 0;
-      continue;
-    } else {
-      return;
-    }
-  }
-}
-function _M0FP29rulescope9rulescope15enumerate__from(domains, index, current, result, maximum_cases) {
-  if (result.length >= maximum_cases) {
-    return undefined;
-  }
-  if (index >= domains.length) {
-    _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(result, current);
-    return undefined;
-  }
-  const domain = _M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(domains, index);
-  const _bind = domain.values;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const value = _bind[_];
-      if (result.length >= maximum_cases) {
-        return undefined;
-      }
-      _M0FP29rulescope9rulescope15enumerate__from(domains, index + 1 | 0, _M0MP29rulescope9rulescope9InputCase13with__binding(current, domain.field, value), result, maximum_cases);
+      const issue = source[_];
+      _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(target, issue);
       _tmp = _ + 1 | 0;
       continue;
     } else {
       return;
     }
   }
-}
-function _M0FP29rulescope9rulescope16enumerate__cases(domains, maximum_cases) {
-  const result = [];
-  if (maximum_cases <= 0) {
-    return result;
-  }
-  _M0FP29rulescope9rulescope15enumerate__from(domains, 0, _M0MP29rulescope9rulescope9InputCase5empty(), result, maximum_cases);
-  return result;
-}
-function _M0FP29rulescope9rulescope18predicate__matches(item, input) {
-  const _bind = _M0MP29rulescope9rulescope9InputCase3get(input, item.field);
-  if (_bind === undefined) {
-    return false;
-  } else {
-    const _Some = _bind;
-    const _actual = _Some;
-    return _M0MP29rulescope9rulescope5Value7compare(_actual, item.operator, item.expected);
-  }
-}
-function _M0FP29rulescope9rulescope13rule__matches(item, input) {
-  if (!item.enabled) {
-    return false;
-  }
-  const _bind = item.predicates;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const condition = _bind[_];
-      if (!_M0FP29rulescope9rulescope18predicate__matches(condition, input)) {
-        return false;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return true;
-}
-function _M0FP29rulescope9rulescope19collect__candidates(policy, input) {
-  const candidates = [];
-  let _tmp = 0;
-  while (true) {
-    const rule_order = _tmp;
-    if (rule_order < policy.rules.length) {
-      const item = _M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(policy.rules, rule_order);
-      if (_M0FP29rulescope9rulescope13rule__matches(item, input)) {
-        const _bind = item.actions;
-        const _bind$2 = _bind.length;
-        let _tmp$2 = 0;
-        while (true) {
-          const _ = _tmp$2;
-          if (_ < _bind$2) {
-            const assignment = _bind[_];
-            _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(candidates, new _M0TP29rulescope9rulescope17DecisionCandidate(assignment.output, assignment.value, item.priority, item.id, rule_order));
-            _tmp$2 = _ + 1 | 0;
-            continue;
-          } else {
-            break;
-          }
-        }
-      }
-      _tmp = rule_order + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return candidates;
-}
-function _M0FP29rulescope9rulescope14evaluate__rule(item, input) {
-  const failed = [];
-  if (!item.enabled) {
-    return new _M0TP29rulescope9rulescope9RuleMatch(item.id, item.name, false, _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(item.predicates));
-  }
-  const _bind = item.predicates;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const condition = _bind[_];
-      if (!_M0FP29rulescope9rulescope18predicate__matches(condition, input)) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(failed, condition);
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0TP29rulescope9rulescope9RuleMatch(item.id, item.name, failed.length === 0, failed);
-}
-function _M0FP29rulescope9rulescope12find__winner(candidates, output) {
-  let winner = undefined;
-  const _bind = candidates.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind) {
-      const candidate = candidates[_];
-      if (candidate.output === output) {
-        const _bind$2 = winner;
-        if (_bind$2 === undefined) {
-          winner = candidate;
-        } else {
-          const _Some = _bind$2;
-          const _current = _Some;
-          if (candidate.priority > _current.priority || candidate.priority === _current.priority && candidate.rule_order < _current.rule_order) {
-            winner = candidate;
-          }
-        }
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return winner;
-}
-function _M0FP29rulescope9rulescope16evaluate__policy(policy, input) {
-  const matches = [];
-  const matched_ids = [];
-  const _bind = policy.rules;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const item = _bind[_];
-      const result = _M0FP29rulescope9rulescope14evaluate__rule(item, input);
-      if (result.matched) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(matched_ids, item.id);
-      }
-      _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(matches, result);
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const candidates = _M0FP29rulescope9rulescope19collect__candidates(policy, input);
-  const decisions = [];
-  const _bind$3 = _M0MP29rulescope9rulescope6Policy14output__fields(policy);
-  const _bind$4 = _bind$3.length;
-  let _tmp$2 = 0;
-  while (true) {
-    const _ = _tmp$2;
-    if (_ < _bind$4) {
-      const field = _bind$3[_];
-      const _bind$5 = _M0FP29rulescope9rulescope12find__winner(candidates, field.name);
-      if (_bind$5 === undefined) {
-      } else {
-        const _Some = _bind$5;
-        const _winner = _Some;
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(decisions, new _M0TP29rulescope9rulescope14OutputDecision(_winner.output, _winner.value, _winner.priority, _winner.rule_id));
-      }
-      _tmp$2 = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0TP29rulescope9rulescope10Evaluation(input, matches, decisions, matched_ids);
 }
 function _M0FP29rulescope9rulescope15contains__value(values, candidate) {
   const _bind = values.length;
@@ -1342,7 +889,7 @@ function _M0FP29rulescope9rulescope21candidates__for__kind(kind, references, con
       return _M0FP29rulescope9rulescope21sort__integer__values(values);
     }
     case 1: {
-      return [_M0FP29rulescope9rulescope21candidates__for__kindN6constrS1675, _M0FP29rulescope9rulescope21candidates__for__kindN6constrS1676];
+      return [_M0FP29rulescope9rulescope21candidates__for__kindN6constrS1954, _M0FP29rulescope9rulescope21candidates__for__kindN6constrS1955];
     }
     default: {
       const _Enumeration = kind;
@@ -1398,6 +945,26 @@ function _M0FP29rulescope9rulescope30referenced__values__for__field(policy, name
   }
   return result;
 }
+function _M0MP29rulescope9rulescope6Policy13input__fields(self) {
+  const _p = self.fields;
+  const _p$2 = [];
+  const _p$3 = _p.length;
+  let _tmp = 0;
+  while (true) {
+    const _p$4 = _tmp;
+    if (_p$4 < _p$3) {
+      const _p$5 = _p[_p$4];
+      if (_M0IP29rulescope9rulescope9FieldRolePB2Eq5equal(_p$5.role, 0)) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(_p$2, _p$5);
+      }
+      _tmp = _p$4 + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return _p$2;
+}
 function _M0FP29rulescope9rulescope25build__candidate__domains(policy, config) {
   const result = [];
   const _bind = _M0MP29rulescope9rulescope6Policy13input__fields(policy);
@@ -1417,165 +984,6 @@ function _M0FP29rulescope9rulescope25build__candidate__domains(policy, config) {
     }
   }
   return result;
-}
-function _M0FP29rulescope9rulescope21diff__contains__value(values, candidate) {
-  const _bind = values.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind) {
-      const value = values[_];
-      if (_M0IP29rulescope9rulescope5ValuePB2Eq5equal(value, candidate)) {
-        return true;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return false;
-}
-function _M0FP29rulescope9rulescope15merged__domains(before, after) {
-  const left = _M0FP29rulescope9rulescope25build__candidate__domains(before, _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1677);
-  const right = _M0FP29rulescope9rulescope25build__candidate__domains(after, _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1677);
-  const result = _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(left);
-  const _bind = right.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind) {
-      const other = right[_];
-      let found = false;
-      let _tmp$2 = 0;
-      while (true) {
-        const index = _tmp$2;
-        if (index < result.length) {
-          if (_M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(result, index).field === other.field) {
-            const combined = _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(_M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(result, index).values);
-            const _bind$2 = other.values;
-            const _bind$3 = _bind$2.length;
-            let _tmp$3 = 0;
-            while (true) {
-              const _$2 = _tmp$3;
-              if (_$2 < _bind$3) {
-                const value = _bind$2[_$2];
-                if (!_M0FP29rulescope9rulescope21diff__contains__value(combined, value)) {
-                  _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(combined, value);
-                }
-                _tmp$3 = _$2 + 1 | 0;
-                continue;
-              } else {
-                break;
-              }
-            }
-            _M0MPC15array5Array3setGRP29rulescope9rulescope15CandidateDomainE(result, index, new _M0TP29rulescope9rulescope15CandidateDomain(other.field, combined));
-            found = true;
-          }
-          _tmp$2 = index + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      if (!found) {
-        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(result, other);
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return result;
-}
-function _M0FP29rulescope9rulescope27diff__policies__with__limit(before, after, maximum_cases, maximum_changes) {
-  const merged = _M0FP29rulescope9rulescope15merged__domains(before, after);
-  const cases = _M0FP29rulescope9rulescope16enumerate__cases(merged, maximum_cases);
-  const changes = [];
-  let truncated = false;
-  const _bind = cases.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind) {
-      const input = cases[_];
-      if (changes.length >= maximum_changes) {
-        truncated = true;
-        break;
-      }
-      const left = _M0FP29rulescope9rulescope16evaluate__policy(before, input);
-      const right = _M0FP29rulescope9rulescope16evaluate__policy(after, input);
-      _M0FP29rulescope9rulescope21append__case__changes(left, right, changes, maximum_changes);
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0TP29rulescope9rulescope12BehaviorDiff(before.name, after.name, cases.length, changes, truncated);
-}
-function _M0FP29rulescope9rulescope16checkout__policy() {
-  const fields = [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope16checkout__policyN6constrS1680, 3), _M0FP29rulescope9rulescope12input__field("tier", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["standard", "plus", "vip"]), 4), _M0FP29rulescope9rulescope12input__field("region", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["cn", "eu", "us"]), 5), _M0FP29rulescope9rulescope12input__field("amount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1681, 6), _M0FP29rulescope9rulescope12input__field("digital", _M0DTP29rulescope9rulescope9FieldKind7Boolean__, 7), _M0FP29rulescope9rulescope13output__field("decision", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny", "review"]), 9), _M0FP29rulescope9rulescope13output__field("discount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1682, 10)];
-  const rules = [new _M0TP29rulescope9rulescope4Rule("R001", "Minors cannot place high-value orders", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope16checkout__policyN6constrS1683, 13), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1684, 13)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1685, 14)], 12, ["safety", "minor"], true), new _M0TP29rulescope9rulescope4Rule("R002", "VIP orders receive fast approval", 100, [_M0FP29rulescope9rulescope9predicate("tier", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1686, 17), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1687, 17)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1688, 18)], 16, ["vip", "conversion"], true), new _M0TP29rulescope9rulescope4Rule("R003", "EU digital goods require review", 80, [_M0FP29rulescope9rulescope9predicate("region", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1689, 21), _M0FP29rulescope9rulescope9predicate("digital", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1690, 21)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1691, 22)], 20, ["eu", "digital"], true), new _M0TP29rulescope9rulescope4Rule("R004", "Large VIP discount", 60, [_M0FP29rulescope9rulescope9predicate("tier", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1692, 25), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1693, 25)], [_M0FP29rulescope9rulescope6action("discount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1694, 26)], 24, ["vip", "discount"], true), new _M0TP29rulescope9rulescope4Rule("R005", "Large order discount", 50, [_M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1695, 29)], [_M0FP29rulescope9rulescope6action("discount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1696, 30)], 28, ["discount"], true), new _M0TP29rulescope9rulescope4Rule("R006", "Regular adult orders are allowed", 10, [_M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope16checkout__policyN6constrS1697, 33), _M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1698, 33)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1699, 34)], 32, ["default"], true)];
-  return new _M0TP29rulescope9rulescope6Policy("Checkout policy", "1.0.0", fields, rules, "Demonstrates equal-priority conflict, precedence, and coverage gaps.");
-}
-function _M0FP29rulescope9rulescope15expense__policy() {
-  const fields = [_M0FP29rulescope9rulescope12input__field("amount", _M0FP29rulescope9rulescope15expense__policyN6constrS1700, 3), _M0FP29rulescope9rulescope12input__field("level", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["staff", "manager", "director"]), 4), _M0FP29rulescope9rulescope12input__field("receipt", _M0DTP29rulescope9rulescope9FieldKind7Boolean__, 5), _M0FP29rulescope9rulescope12input__field("category", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["travel", "meal", "equipment"]), 6), _M0FP29rulescope9rulescope13output__field("decision", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["approve", "reject", "review"]), 8)];
-  const rules = [_M0FP29rulescope9rulescope4rule("E001", "Reject large claims without a receipt", 100, [_M0FP29rulescope9rulescope9predicate("receipt", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1701, 11), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope15expense__policyN6constrS1702, 11)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1703, 12)]), _M0FP29rulescope9rulescope4rule("E002", "Directors can self-approve small claims", 100, [_M0FP29rulescope9rulescope9predicate("level", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1704, 15), _M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope15expense__policyN6constrS1705, 15)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1706, 16)]), _M0FP29rulescope9rulescope4rule("E003", "Equipment purchases require review", 80, [_M0FP29rulescope9rulescope9predicate("category", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1707, 19), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope15expense__policyN6constrS1708, 19)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1709, 20)]), _M0FP29rulescope9rulescope4rule("E004", "Managers can approve normal travel", 70, [_M0FP29rulescope9rulescope9predicate("level", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1710, 23), _M0FP29rulescope9rulescope9predicate("category", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1711, 23), _M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope15expense__policyN6constrS1712, 23)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1713, 24)]), _M0FP29rulescope9rulescope4rule("E005", "Small claims pass automatically", 60, [_M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope15expense__policyN6constrS1714, 27)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1715, 28)])];
-  return new _M0TP29rulescope9rulescope6Policy("Expense policy", "1.0.0", fields, rules, "Expense approval policy with receipt, role, and category boundaries.");
-}
-function _M0FP29rulescope9rulescope15content__policy() {
-  const fields = [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope15content__policyN6constrS1716, 3), _M0FP29rulescope9rulescope12input__field("member", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["guest", "normal", "premium"]), 4), _M0FP29rulescope9rulescope12input__field("rating", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["general", "teen", "adult"]), 5), _M0FP29rulescope9rulescope12input__field("region", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["cn", "eu", "us"]), 6), _M0FP29rulescope9rulescope13output__field("access", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny", "verify"]), 8)];
-  const rules = [_M0FP29rulescope9rulescope4rule("C001", "Minors cannot access adult content", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope15content__policyN6constrS1717, 11), _M0FP29rulescope9rulescope9predicate("rating", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1718, 11)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS1719, 12)]), _M0FP29rulescope9rulescope4rule("C002", "Premium members can access all content", 100, [_M0FP29rulescope9rulescope9predicate("member", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1720, 15)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS1721, 16)]), _M0FP29rulescope9rulescope4rule("C003", "EU guests must verify", 80, [_M0FP29rulescope9rulescope9predicate("region", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1722, 19), _M0FP29rulescope9rulescope9predicate("member", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1723, 19)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS1724, 20)]), _M0FP29rulescope9rulescope4rule("C004", "General content is open", 40, [_M0FP29rulescope9rulescope9predicate("rating", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1725, 23)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS1726, 24)]), _M0FP29rulescope9rulescope4rule("C005", "Adults can access content", 30, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope15content__policyN6constrS1727, 27)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS1728, 28)])];
-  return new _M0TP29rulescope9rulescope6Policy("Content access policy", "1.0.0", fields, rules, "Age, membership, regional verification, and rating policy.");
-}
-function _M0FP29rulescope9rulescope17insurance__policy() {
-  const fields = [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope17insurance__policyN6constrS1729, 3), _M0FP29rulescope9rulescope12input__field("claim", _M0FP29rulescope9rulescope17insurance__policyN6constrS1730, 4), _M0FP29rulescope9rulescope12input__field("history", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["clear", "minor", "major"]), 5), _M0FP29rulescope9rulescope12input__field("documents", _M0DTP29rulescope9rulescope9FieldKind7Boolean__, 6), _M0FP29rulescope9rulescope13output__field("decision", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["accept", "reject", "manual"]), 8), _M0FP29rulescope9rulescope13output__field("risk", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["low", "medium", "high"]), 9)];
-  const rules = [_M0FP29rulescope9rulescope4rule("I001", "Missing documents require manual review", 100, [_M0FP29rulescope9rulescope9predicate("documents", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS1731, 12)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS1732, 13)]), _M0FP29rulescope9rulescope4rule("I002", "Major history rejects large claims", 90, [_M0FP29rulescope9rulescope9predicate("history", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS1733, 16), _M0FP29rulescope9rulescope9predicate("claim", 5, _M0FP29rulescope9rulescope17insurance__policyN6constrS1734, 16)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS1735, 17)]), _M0FP29rulescope9rulescope4rule("I003", "Senior large claims need manual review", 80, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope17insurance__policyN6constrS1736, 20), _M0FP29rulescope9rulescope9predicate("claim", 5, _M0FP29rulescope9rulescope17insurance__policyN6constrS1737, 20)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS1738, 21)]), _M0FP29rulescope9rulescope4rule("I004", "Small claims are accepted", 60, [_M0FP29rulescope9rulescope9predicate("claim", 2, _M0FP29rulescope9rulescope17insurance__policyN6constrS1739, 24)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS1740, 25)]), _M0FP29rulescope9rulescope4rule("I005", "Major history is high risk", 50, [_M0FP29rulescope9rulescope9predicate("history", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS1741, 28)], [_M0FP29rulescope9rulescope6action("risk", _M0FP29rulescope9rulescope17insurance__policyN6constrS1742, 29)]), _M0FP29rulescope9rulescope4rule("I006", "Clear history is low risk", 40, [_M0FP29rulescope9rulescope9predicate("history", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS1743, 32)], [_M0FP29rulescope9rulescope6action("risk", _M0FP29rulescope9rulescope17insurance__policyN6constrS1744, 33)])];
-  return new _M0TP29rulescope9rulescope6Policy("Insurance intake policy", "1.0.0", fields, rules, "Claim intake policy with two independent outputs.");
-}
-function _M0FP29rulescope9rulescope18clean__age__policy() {
-  return _M0FP29rulescope9rulescope6policy("Clean age gate", [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope18clean__age__policyN6constrS1745, 1), _M0FP29rulescope9rulescope13output__field("access", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny"]), 2)], [_M0FP29rulescope9rulescope4rule("A001", "Deny minors", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope18clean__age__policyN6constrS1746, 3)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope18clean__age__policyN6constrS1747, 4)]), _M0FP29rulescope9rulescope4rule("A002", "Allow adults", 100, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope18clean__age__policyN6constrS1748, 5)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope18clean__age__policyN6constrS1749, 6)])]);
-}
-function _M0FP29rulescope9rulescope15age__policy__v2() {
-  return _M0FP29rulescope9rulescope6policy("Clean age gate v2", [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope15age__policy__v2N6constrS1770, 1), _M0FP29rulescope9rulescope13output__field("access", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny", "review"]), 2)], [_M0FP29rulescope9rulescope4rule("A001", "Deny children", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope15age__policy__v2N6constrS1771, 3)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15age__policy__v2N6constrS1772, 4)]), _M0FP29rulescope9rulescope4rule("A003", "Review young users", 100, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope15age__policy__v2N6constrS1773, 5), _M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope15age__policy__v2N6constrS1774, 5)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15age__policy__v2N6constrS1775, 6)]), _M0FP29rulescope9rulescope4rule("A002", "Allow adults", 100, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope15age__policy__v2N6constrS1776, 7)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15age__policy__v2N6constrS1777, 8)])]);
-}
-function _M0MP29rulescope9rulescope10Evaluation7matched(self, rule_id) {
-  const _bind = self.matched_rule_ids;
-  const _bind$2 = _bind.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind$2) {
-      const id = _bind[_];
-      if (id === rule_id) {
-        return true;
-      }
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return false;
-}
-function _M0FP29rulescope9rulescope15evaluate__cases(policy, cases) {
-  const _p = new Array(cases.length);
-  const _p$2 = cases.length;
-  let _tmp = 0;
-  while (true) {
-    const _p$3 = _tmp;
-    if (_p$3 < _p$2) {
-      const _p$4 = cases[_p$3];
-      _p[_p$3] = _M0FP29rulescope9rulescope16evaluate__policy(policy, _p$4);
-      _tmp = _p$3 + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return _p;
 }
 function _M0FP29rulescope9rulescope16contains__string(values, candidate) {
   const _bind = values.length;
@@ -1615,76 +1023,24 @@ function _M0FP29rulescope9rulescope18winning__rule__ids(evaluation) {
   }
   return result;
 }
-function _M0FP29rulescope9rulescope14diff__policies(before, after) {
-  return _M0FP29rulescope9rulescope27diff__policies__with__limit(before, after, 12000, 500);
-}
-function _M0MP29rulescope9rulescope10ChangeKind6render(self) {
-  switch (self) {
-    case 0: {
-      return "added-decision";
-    }
-    case 1: {
-      return "removed-decision";
-    }
-    case 2: {
-      return "changed-decision";
-    }
-    default: {
-      return "changed-winning-rule";
-    }
-  }
-}
-function _M0MP29rulescope9rulescope12BehaviorDiff12render__text(self) {
-  let rendered = `Behavior diff: ${self.before_name} -> ${self.after_name}\n`;
-  rendered = `${rendered}checked=${_M0MPC13int3Int18to__string_2einner(self.checked_cases, 10)} changes=${_M0MPC13int3Int18to__string_2einner(self.changes.length, 10)}\n`;
-  const _bind = self.changes;
+function _M0MP29rulescope9rulescope10Evaluation7matched(self, rule_id) {
+  const _bind = self.matched_rule_ids;
   const _bind$2 = _bind.length;
   let _tmp = 0;
   while (true) {
     const _ = _tmp;
     if (_ < _bind$2) {
-      const change = _bind[_];
-      const _bind$3 = change.before;
-      let before_value;
-      if (_bind$3 === undefined) {
-        before_value = "<missing>";
-      } else {
-        const _Some = _bind$3;
-        const _value = _Some;
-        before_value = _M0MP29rulescope9rulescope5Value14render__quoted(_value);
+      const id = _bind[_];
+      if (id === rule_id) {
+        return true;
       }
-      const _bind$4 = change.after;
-      let after_value;
-      if (_bind$4 === undefined) {
-        after_value = "<missing>";
-      } else {
-        const _Some = _bind$4;
-        const _value = _Some;
-        after_value = _M0MP29rulescope9rulescope5Value14render__quoted(_value);
-      }
-      rendered = `${rendered}[${_M0MP29rulescope9rulescope10ChangeKind6render(change.kind)}] ${change.output}: ${before_value} -> ${after_value} for ${_M0MP29rulescope9rulescope9InputCase6render(change.input)}\n`;
       _tmp = _ + 1 | 0;
       continue;
     } else {
       break;
     }
   }
-  return rendered;
-}
-function _M0FP29rulescope9rulescope19append__all__issues(target, source) {
-  const _bind = source.length;
-  let _tmp = 0;
-  while (true) {
-    const _ = _tmp;
-    if (_ < _bind) {
-      const issue = source[_];
-      _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(target, issue);
-      _tmp = _ + 1 | 0;
-      continue;
-    } else {
-      return;
-    }
-  }
+  return false;
 }
 function _M0FP29rulescope9rulescope19calculate__coverage(policy, evaluations) {
   const result = [];
@@ -1786,6 +1142,281 @@ function _M0FP29rulescope9rulescope16calculate__stats(issues, evaluations) {
   }
   return new _M0TP29rulescope9rulescope13AnalysisStats(evaluations.length, covered, evaluations.length - covered | 0, critical, warnings, information);
 }
+function _M0MP29rulescope9rulescope9InputCase13with__binding(self, field, value) {
+  const result = _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(self.bindings);
+  let replaced = false;
+  let _tmp = 0;
+  while (true) {
+    const index = _tmp;
+    if (index < result.length) {
+      if (_M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(result, index).field === field) {
+        _M0MPC15array5Array3setGRP29rulescope9rulescope15CandidateDomainE(result, index, new _M0TP29rulescope9rulescope7Binding(field, value));
+        replaced = true;
+      }
+      _tmp = index + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  if (!replaced) {
+    _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(result, new _M0TP29rulescope9rulescope7Binding(field, value));
+  }
+  return new _M0TP29rulescope9rulescope9InputCase(result);
+}
+function _M0FP29rulescope9rulescope15enumerate__from(domains, index, current, result, maximum_cases) {
+  if (result.length >= maximum_cases) {
+    return undefined;
+  }
+  if (index >= domains.length) {
+    _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(result, current);
+    return undefined;
+  }
+  const domain = _M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(domains, index);
+  const _bind = domain.values;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const value = _bind[_];
+      if (result.length >= maximum_cases) {
+        return undefined;
+      }
+      _M0FP29rulescope9rulescope15enumerate__from(domains, index + 1 | 0, _M0MP29rulescope9rulescope9InputCase13with__binding(current, domain.field, value), result, maximum_cases);
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      return;
+    }
+  }
+}
+function _M0MP29rulescope9rulescope9InputCase5empty() {
+  return new _M0TP29rulescope9rulescope9InputCase([]);
+}
+function _M0FP29rulescope9rulescope16enumerate__cases(domains, maximum_cases) {
+  const result = [];
+  if (maximum_cases <= 0) {
+    return result;
+  }
+  _M0FP29rulescope9rulescope15enumerate__from(domains, 0, _M0MP29rulescope9rulescope9InputCase5empty(), result, maximum_cases);
+  return result;
+}
+function _M0MP29rulescope9rulescope9InputCase3get(self, field) {
+  const _bind = self.bindings;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const binding = _bind[_];
+      if (binding.field === field) {
+        return binding.value;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return undefined;
+}
+function _M0FP29rulescope9rulescope18predicate__matches(item, input) {
+  const _bind = _M0MP29rulescope9rulescope9InputCase3get(input, item.field);
+  if (_bind === undefined) {
+    return false;
+  } else {
+    const _Some = _bind;
+    const _actual = _Some;
+    return _M0MP29rulescope9rulescope5Value7compare(_actual, item.operator, item.expected);
+  }
+}
+function _M0FP29rulescope9rulescope13rule__matches(item, input) {
+  if (!item.enabled) {
+    return false;
+  }
+  const _bind = item.predicates;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const condition = _bind[_];
+      if (!_M0FP29rulescope9rulescope18predicate__matches(condition, input)) {
+        return false;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return true;
+}
+function _M0FP29rulescope9rulescope19collect__candidates(policy, input) {
+  const candidates = [];
+  let _tmp = 0;
+  while (true) {
+    const rule_order = _tmp;
+    if (rule_order < policy.rules.length) {
+      const item = _M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(policy.rules, rule_order);
+      if (_M0FP29rulescope9rulescope13rule__matches(item, input)) {
+        const _bind = item.actions;
+        const _bind$2 = _bind.length;
+        let _tmp$2 = 0;
+        while (true) {
+          const _ = _tmp$2;
+          if (_ < _bind$2) {
+            const assignment = _bind[_];
+            _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(candidates, new _M0TP29rulescope9rulescope17DecisionCandidate(assignment.output, assignment.value, item.priority, item.id, rule_order));
+            _tmp$2 = _ + 1 | 0;
+            continue;
+          } else {
+            break;
+          }
+        }
+      }
+      _tmp = rule_order + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return candidates;
+}
+function _M0FP29rulescope9rulescope14evaluate__rule(item, input) {
+  const failed = [];
+  if (!item.enabled) {
+    return new _M0TP29rulescope9rulescope9RuleMatch(item.id, item.name, false, _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(item.predicates));
+  }
+  const _bind = item.predicates;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const condition = _bind[_];
+      if (!_M0FP29rulescope9rulescope18predicate__matches(condition, input)) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(failed, condition);
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0TP29rulescope9rulescope9RuleMatch(item.id, item.name, failed.length === 0, failed);
+}
+function _M0FP29rulescope9rulescope12find__winner(candidates, output) {
+  let winner = undefined;
+  const _bind = candidates.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind) {
+      const candidate = candidates[_];
+      if (candidate.output === output) {
+        const _bind$2 = winner;
+        if (_bind$2 === undefined) {
+          winner = candidate;
+        } else {
+          const _Some = _bind$2;
+          const _current = _Some;
+          if (candidate.priority > _current.priority || candidate.priority === _current.priority && candidate.rule_order < _current.rule_order) {
+            winner = candidate;
+          }
+        }
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return winner;
+}
+function _M0MP29rulescope9rulescope6Policy14output__fields(self) {
+  const _p = self.fields;
+  const _p$2 = [];
+  const _p$3 = _p.length;
+  let _tmp = 0;
+  while (true) {
+    const _p$4 = _tmp;
+    if (_p$4 < _p$3) {
+      const _p$5 = _p[_p$4];
+      if (_M0IP29rulescope9rulescope9FieldRolePB2Eq5equal(_p$5.role, 1)) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(_p$2, _p$5);
+      }
+      _tmp = _p$4 + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return _p$2;
+}
+function _M0FP29rulescope9rulescope16evaluate__policy(policy, input) {
+  const matches = [];
+  const matched_ids = [];
+  const _bind = policy.rules;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const item = _bind[_];
+      const result = _M0FP29rulescope9rulescope14evaluate__rule(item, input);
+      if (result.matched) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(matched_ids, item.id);
+      }
+      _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(matches, result);
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const candidates = _M0FP29rulescope9rulescope19collect__candidates(policy, input);
+  const decisions = [];
+  const _bind$3 = _M0MP29rulescope9rulescope6Policy14output__fields(policy);
+  const _bind$4 = _bind$3.length;
+  let _tmp$2 = 0;
+  while (true) {
+    const _ = _tmp$2;
+    if (_ < _bind$4) {
+      const field = _bind$3[_];
+      const _bind$5 = _M0FP29rulescope9rulescope12find__winner(candidates, field.name);
+      if (_bind$5 === undefined) {
+      } else {
+        const _Some = _bind$5;
+        const _winner = _Some;
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(decisions, new _M0TP29rulescope9rulescope14OutputDecision(_winner.output, _winner.value, _winner.priority, _winner.rule_id));
+      }
+      _tmp$2 = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0TP29rulescope9rulescope10Evaluation(input, matches, decisions, matched_ids);
+}
+function _M0FP29rulescope9rulescope15evaluate__cases(policy, cases) {
+  const _p = new Array(cases.length);
+  const _p$2 = cases.length;
+  let _tmp = 0;
+  while (true) {
+    const _p$3 = _tmp;
+    if (_p$3 < _p$2) {
+      const _p$4 = cases[_p$3];
+      _p[_p$3] = _M0FP29rulescope9rulescope16evaluate__policy(policy, _p$4);
+      _tmp = _p$3 + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return _p;
+}
 function _M0FP29rulescope9rulescope13conflict__key(left, right, output) {
   return _M0IP016_24default__implPB7Compare6op__ltGsE(left, right) ? `${left}:${right}:${output}` : `${right}:${left}:${output}`;
 }
@@ -1806,6 +1437,25 @@ function _M0FP29rulescope9rulescope14contains__text(values, candidate) {
     }
   }
   return false;
+}
+function _M0MP29rulescope9rulescope6Policy10find__rule(self, id) {
+  const _bind = self.rules;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const item = _bind[_];
+      if (item.id === id) {
+        return item;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return undefined;
 }
 function _M0FP29rulescope9rulescope32matched__rules__from__evaluation(policy, evaluation) {
   const result = [];
@@ -1909,6 +1559,25 @@ function _M0FP29rulescope9rulescope15find__conflicts(policy, evaluations) {
     }
   }
   return issues;
+}
+function _M0MP29rulescope9rulescope10Evaluation13decision__for(self, output) {
+  const _bind = self.decisions;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const decision = _bind[_];
+      if (decision.output === output) {
+        return decision;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return undefined;
 }
 function _M0FP29rulescope9rulescope20find__coverage__gaps(policy, evaluations) {
   const issues = [];
@@ -2148,6 +1817,25 @@ function _M0FP29rulescope9rulescope16validate__fields(policy) {
   }
   return issues;
 }
+function _M0MP29rulescope9rulescope6Policy11find__field(self, name) {
+  const _bind = self.fields;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const field = _bind[_];
+      if (field.name === name) {
+        return field;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return undefined;
+}
 function _M0FP29rulescope9rulescope26validate__rule__references(policy, item) {
   const issues = [];
   const _bind = item.predicates;
@@ -2287,7 +1975,319 @@ function _M0FP29rulescope9rulescope21analyze__with__config(policy, config) {
   return new _M0TP29rulescope9rulescope14AnalysisReport(policy.name, issues, coverage, evaluations, stats);
 }
 function _M0FP29rulescope9rulescope7analyze(policy) {
-  return _M0FP29rulescope9rulescope21analyze__with__config(policy, _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1677);
+  return _M0FP29rulescope9rulescope21analyze__with__config(policy, _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1956);
+}
+function _M0FP29rulescope9rulescope22diff__contains__string(values, candidate) {
+  const _bind = values.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind) {
+      const value = values[_];
+      if (value === candidate) {
+        return true;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return false;
+}
+function _M0FP29rulescope9rulescope21append__case__changes(before, after, changes, maximum_changes) {
+  const outputs = [];
+  const _bind = before.decisions;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const decision = _bind[_];
+      if (!_M0FP29rulescope9rulescope22diff__contains__string(outputs, decision.output)) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(outputs, decision.output);
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const _bind$3 = after.decisions;
+  const _bind$4 = _bind$3.length;
+  let _tmp$2 = 0;
+  while (true) {
+    const _ = _tmp$2;
+    if (_ < _bind$4) {
+      const decision = _bind$3[_];
+      if (!_M0FP29rulescope9rulescope22diff__contains__string(outputs, decision.output)) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(outputs, decision.output);
+      }
+      _tmp$2 = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const _bind$5 = outputs.length;
+  let _tmp$3 = 0;
+  while (true) {
+    const _ = _tmp$3;
+    if (_ < _bind$5) {
+      const output = outputs[_];
+      if (changes.length >= maximum_changes) {
+        return undefined;
+      }
+      const left = _M0MP29rulescope9rulescope10Evaluation13decision__for(before, output);
+      const right = _M0MP29rulescope9rulescope10Evaluation13decision__for(after, output);
+      if (left === undefined) {
+        if (right === undefined) {
+        } else {
+          const _Some = right;
+          const _next = _Some;
+          _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, undefined, _next.value, undefined, _next.rule_id, 0));
+        }
+      } else {
+        const _Some = left;
+        const _previous = _Some;
+        if (right === undefined) {
+          _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, _previous.value, undefined, _previous.rule_id, undefined, 1));
+        } else {
+          const _Some$2 = right;
+          const _next = _Some$2;
+          if (_M0IP016_24default__implPB2Eq10not__equalGRP29rulescope9rulescope5ValueE(_previous.value, _next.value)) {
+            _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, _previous.value, _next.value, _previous.rule_id, _next.rule_id, 2));
+          } else {
+            const _p = _previous.rule_id;
+            const _p$2 = _next.rule_id;
+            if (!(_p === _p$2)) {
+              _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(changes, new _M0TP29rulescope9rulescope20BehaviorChangeRecord(before.input, output, _previous.value, _next.value, _previous.rule_id, _next.rule_id, 3));
+            }
+          }
+        }
+      }
+      _tmp$3 = _ + 1 | 0;
+      continue;
+    } else {
+      return;
+    }
+  }
+}
+function _M0FP29rulescope9rulescope21diff__contains__value(values, candidate) {
+  const _bind = values.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind) {
+      const value = values[_];
+      if (_M0IP29rulescope9rulescope5ValuePB2Eq5equal(value, candidate)) {
+        return true;
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return false;
+}
+function _M0FP29rulescope9rulescope15merged__domains(before, after) {
+  const left = _M0FP29rulescope9rulescope25build__candidate__domains(before, _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1956);
+  const right = _M0FP29rulescope9rulescope25build__candidate__domains(after, _M0MP29rulescope9rulescope17ExplorationConfig8standardN6recordS1956);
+  const result = _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(left);
+  const _bind = right.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind) {
+      const other = right[_];
+      let found = false;
+      let _tmp$2 = 0;
+      while (true) {
+        const index = _tmp$2;
+        if (index < result.length) {
+          if (_M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(result, index).field === other.field) {
+            const combined = _M0MPC15array5Array4copyGRP29rulescope9rulescope5IssueE(_M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(result, index).values);
+            const _bind$2 = other.values;
+            const _bind$3 = _bind$2.length;
+            let _tmp$3 = 0;
+            while (true) {
+              const _$2 = _tmp$3;
+              if (_$2 < _bind$3) {
+                const value = _bind$2[_$2];
+                if (!_M0FP29rulescope9rulescope21diff__contains__value(combined, value)) {
+                  _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(combined, value);
+                }
+                _tmp$3 = _$2 + 1 | 0;
+                continue;
+              } else {
+                break;
+              }
+            }
+            _M0MPC15array5Array3setGRP29rulescope9rulescope15CandidateDomainE(result, index, new _M0TP29rulescope9rulescope15CandidateDomain(other.field, combined));
+            found = true;
+          }
+          _tmp$2 = index + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      if (!found) {
+        _M0MPC15array5Array4pushGRP29rulescope9rulescope5IssueE(result, other);
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return result;
+}
+function _M0FP29rulescope9rulescope27diff__policies__with__limit(before, after, maximum_cases, maximum_changes) {
+  const merged = _M0FP29rulescope9rulescope15merged__domains(before, after);
+  const cases = _M0FP29rulescope9rulescope16enumerate__cases(merged, maximum_cases);
+  const changes = [];
+  let truncated = false;
+  const _bind = cases.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind) {
+      const input = cases[_];
+      if (changes.length >= maximum_changes) {
+        truncated = true;
+        break;
+      }
+      const left = _M0FP29rulescope9rulescope16evaluate__policy(before, input);
+      const right = _M0FP29rulescope9rulescope16evaluate__policy(after, input);
+      _M0FP29rulescope9rulescope21append__case__changes(left, right, changes, maximum_changes);
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0TP29rulescope9rulescope12BehaviorDiff(before.name, after.name, cases.length, changes, truncated);
+}
+function _M0MP29rulescope9rulescope9InputCase6render(self) {
+  let rendered = "{";
+  let _tmp = 0;
+  while (true) {
+    const index = _tmp;
+    if (index < self.bindings.length) {
+      if (index > 0) {
+        rendered = `${rendered}, `;
+      }
+      const binding = _M0MPC15array5Array2atGRP29rulescope9rulescope5IssueE(self.bindings, index);
+      rendered = `${rendered}${binding.field}: ${_M0MP29rulescope9rulescope5Value14render__quoted(binding.value)}`;
+      _tmp = index + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return `${rendered}}`;
+}
+function _M0FP29rulescope9rulescope12input__field(name, kind, line) {
+  return new _M0TP29rulescope9rulescope5Field(name, kind, 0, line);
+}
+function _M0FP29rulescope9rulescope13output__field(name, kind, line) {
+  return new _M0TP29rulescope9rulescope5Field(name, kind, 1, line);
+}
+function _M0FP29rulescope9rulescope9predicate(field, operator, expected, line) {
+  return new _M0TP29rulescope9rulescope9Predicate(field, operator, expected, line);
+}
+function _M0FP29rulescope9rulescope6action(output, value, line) {
+  return new _M0TP29rulescope9rulescope6Action(output, value, line);
+}
+function _M0FP29rulescope9rulescope4rule(id, name, priority, predicates, actions) {
+  return new _M0TP29rulescope9rulescope4Rule(id, name, priority, predicates, actions, 0, [], true);
+}
+function _M0FP29rulescope9rulescope6policy(name, fields, rules) {
+  return new _M0TP29rulescope9rulescope6Policy(name, "1", fields, rules, "");
+}
+function _M0FP29rulescope9rulescope16checkout__policy() {
+  const fields = [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope16checkout__policyN6constrS1959, 3), _M0FP29rulescope9rulescope12input__field("tier", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["standard", "plus", "vip"]), 4), _M0FP29rulescope9rulescope12input__field("region", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["cn", "eu", "us"]), 5), _M0FP29rulescope9rulescope12input__field("amount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1960, 6), _M0FP29rulescope9rulescope12input__field("digital", _M0DTP29rulescope9rulescope9FieldKind7Boolean__, 7), _M0FP29rulescope9rulescope13output__field("decision", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny", "review"]), 9), _M0FP29rulescope9rulescope13output__field("discount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1961, 10)];
+  const rules = [new _M0TP29rulescope9rulescope4Rule("R001", "Minors cannot place high-value orders", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope16checkout__policyN6constrS1962, 13), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1963, 13)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1964, 14)], 12, ["safety", "minor"], true), new _M0TP29rulescope9rulescope4Rule("R002", "VIP orders receive fast approval", 100, [_M0FP29rulescope9rulescope9predicate("tier", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1965, 17), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1966, 17)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1967, 18)], 16, ["vip", "conversion"], true), new _M0TP29rulescope9rulescope4Rule("R003", "EU digital goods require review", 80, [_M0FP29rulescope9rulescope9predicate("region", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1968, 21), _M0FP29rulescope9rulescope9predicate("digital", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1969, 21)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1970, 22)], 20, ["eu", "digital"], true), new _M0TP29rulescope9rulescope4Rule("R004", "Large VIP discount", 60, [_M0FP29rulescope9rulescope9predicate("tier", 0, _M0FP29rulescope9rulescope16checkout__policyN6constrS1971, 25), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1972, 25)], [_M0FP29rulescope9rulescope6action("discount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1973, 26)], 24, ["vip", "discount"], true), new _M0TP29rulescope9rulescope4Rule("R005", "Large order discount", 50, [_M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1974, 29)], [_M0FP29rulescope9rulescope6action("discount", _M0FP29rulescope9rulescope16checkout__policyN6constrS1975, 30)], 28, ["discount"], true), new _M0TP29rulescope9rulescope4Rule("R006", "Regular adult orders are allowed", 10, [_M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope16checkout__policyN6constrS1976, 33), _M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope16checkout__policyN6constrS1977, 33)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope16checkout__policyN6constrS1978, 34)], 32, ["default"], true)];
+  return new _M0TP29rulescope9rulescope6Policy("Checkout policy", "1.0.0", fields, rules, "Demonstrates equal-priority conflict, precedence, and coverage gaps.");
+}
+function _M0FP29rulescope9rulescope15expense__policy() {
+  const fields = [_M0FP29rulescope9rulescope12input__field("amount", _M0FP29rulescope9rulescope15expense__policyN6constrS1979, 3), _M0FP29rulescope9rulescope12input__field("level", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["staff", "manager", "director"]), 4), _M0FP29rulescope9rulescope12input__field("receipt", _M0DTP29rulescope9rulescope9FieldKind7Boolean__, 5), _M0FP29rulescope9rulescope12input__field("category", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["travel", "meal", "equipment"]), 6), _M0FP29rulescope9rulescope13output__field("decision", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["approve", "reject", "review"]), 8)];
+  const rules = [_M0FP29rulescope9rulescope4rule("E001", "Reject large claims without a receipt", 100, [_M0FP29rulescope9rulescope9predicate("receipt", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1980, 11), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope15expense__policyN6constrS1981, 11)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1982, 12)]), _M0FP29rulescope9rulescope4rule("E002", "Directors can self-approve small claims", 100, [_M0FP29rulescope9rulescope9predicate("level", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1983, 15), _M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope15expense__policyN6constrS1984, 15)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1985, 16)]), _M0FP29rulescope9rulescope4rule("E003", "Equipment purchases require review", 80, [_M0FP29rulescope9rulescope9predicate("category", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1986, 19), _M0FP29rulescope9rulescope9predicate("amount", 5, _M0FP29rulescope9rulescope15expense__policyN6constrS1987, 19)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1988, 20)]), _M0FP29rulescope9rulescope4rule("E004", "Managers can approve normal travel", 70, [_M0FP29rulescope9rulescope9predicate("level", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1989, 23), _M0FP29rulescope9rulescope9predicate("category", 0, _M0FP29rulescope9rulescope15expense__policyN6constrS1990, 23), _M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope15expense__policyN6constrS1991, 23)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1992, 24)]), _M0FP29rulescope9rulescope4rule("E005", "Small claims pass automatically", 60, [_M0FP29rulescope9rulescope9predicate("amount", 2, _M0FP29rulescope9rulescope15expense__policyN6constrS1993, 27)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope15expense__policyN6constrS1994, 28)])];
+  return new _M0TP29rulescope9rulescope6Policy("Expense policy", "1.0.0", fields, rules, "Expense approval policy with receipt, role, and category boundaries.");
+}
+function _M0FP29rulescope9rulescope15content__policy() {
+  const fields = [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope15content__policyN6constrS1995, 3), _M0FP29rulescope9rulescope12input__field("member", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["guest", "normal", "premium"]), 4), _M0FP29rulescope9rulescope12input__field("rating", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["general", "teen", "adult"]), 5), _M0FP29rulescope9rulescope12input__field("region", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["cn", "eu", "us"]), 6), _M0FP29rulescope9rulescope13output__field("access", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny", "verify"]), 8)];
+  const rules = [_M0FP29rulescope9rulescope4rule("C001", "Minors cannot access adult content", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope15content__policyN6constrS1996, 11), _M0FP29rulescope9rulescope9predicate("rating", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1997, 11)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS1998, 12)]), _M0FP29rulescope9rulescope4rule("C002", "Premium members can access all content", 100, [_M0FP29rulescope9rulescope9predicate("member", 0, _M0FP29rulescope9rulescope15content__policyN6constrS1999, 15)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS2000, 16)]), _M0FP29rulescope9rulescope4rule("C003", "EU guests must verify", 80, [_M0FP29rulescope9rulescope9predicate("region", 0, _M0FP29rulescope9rulescope15content__policyN6constrS2001, 19), _M0FP29rulescope9rulescope9predicate("member", 0, _M0FP29rulescope9rulescope15content__policyN6constrS2002, 19)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS2003, 20)]), _M0FP29rulescope9rulescope4rule("C004", "General content is open", 40, [_M0FP29rulescope9rulescope9predicate("rating", 0, _M0FP29rulescope9rulescope15content__policyN6constrS2004, 23)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS2005, 24)]), _M0FP29rulescope9rulescope4rule("C005", "Adults can access content", 30, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope15content__policyN6constrS2006, 27)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15content__policyN6constrS2007, 28)])];
+  return new _M0TP29rulescope9rulescope6Policy("Content access policy", "1.0.0", fields, rules, "Age, membership, regional verification, and rating policy.");
+}
+function _M0FP29rulescope9rulescope17insurance__policy() {
+  const fields = [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope17insurance__policyN6constrS2008, 3), _M0FP29rulescope9rulescope12input__field("claim", _M0FP29rulescope9rulescope17insurance__policyN6constrS2009, 4), _M0FP29rulescope9rulescope12input__field("history", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["clear", "minor", "major"]), 5), _M0FP29rulescope9rulescope12input__field("documents", _M0DTP29rulescope9rulescope9FieldKind7Boolean__, 6), _M0FP29rulescope9rulescope13output__field("decision", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["accept", "reject", "manual"]), 8), _M0FP29rulescope9rulescope13output__field("risk", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["low", "medium", "high"]), 9)];
+  const rules = [_M0FP29rulescope9rulescope4rule("I001", "Missing documents require manual review", 100, [_M0FP29rulescope9rulescope9predicate("documents", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS2010, 12)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS2011, 13)]), _M0FP29rulescope9rulescope4rule("I002", "Major history rejects large claims", 90, [_M0FP29rulescope9rulescope9predicate("history", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS2012, 16), _M0FP29rulescope9rulescope9predicate("claim", 5, _M0FP29rulescope9rulescope17insurance__policyN6constrS2013, 16)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS2014, 17)]), _M0FP29rulescope9rulescope4rule("I003", "Senior large claims need manual review", 80, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope17insurance__policyN6constrS2015, 20), _M0FP29rulescope9rulescope9predicate("claim", 5, _M0FP29rulescope9rulescope17insurance__policyN6constrS2016, 20)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS2017, 21)]), _M0FP29rulescope9rulescope4rule("I004", "Small claims are accepted", 60, [_M0FP29rulescope9rulescope9predicate("claim", 2, _M0FP29rulescope9rulescope17insurance__policyN6constrS2018, 24)], [_M0FP29rulescope9rulescope6action("decision", _M0FP29rulescope9rulescope17insurance__policyN6constrS2019, 25)]), _M0FP29rulescope9rulescope4rule("I005", "Major history is high risk", 50, [_M0FP29rulescope9rulescope9predicate("history", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS2020, 28)], [_M0FP29rulescope9rulescope6action("risk", _M0FP29rulescope9rulescope17insurance__policyN6constrS2021, 29)]), _M0FP29rulescope9rulescope4rule("I006", "Clear history is low risk", 40, [_M0FP29rulescope9rulescope9predicate("history", 0, _M0FP29rulescope9rulescope17insurance__policyN6constrS2022, 32)], [_M0FP29rulescope9rulescope6action("risk", _M0FP29rulescope9rulescope17insurance__policyN6constrS2023, 33)])];
+  return new _M0TP29rulescope9rulescope6Policy("Insurance intake policy", "1.0.0", fields, rules, "Claim intake policy with two independent outputs.");
+}
+function _M0FP29rulescope9rulescope18clean__age__policy() {
+  return _M0FP29rulescope9rulescope6policy("Clean age gate", [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope18clean__age__policyN6constrS2024, 1), _M0FP29rulescope9rulescope13output__field("access", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny"]), 2)], [_M0FP29rulescope9rulescope4rule("A001", "Deny minors", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope18clean__age__policyN6constrS2025, 3)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope18clean__age__policyN6constrS2026, 4)]), _M0FP29rulescope9rulescope4rule("A002", "Allow adults", 100, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope18clean__age__policyN6constrS2027, 5)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope18clean__age__policyN6constrS2028, 6)])]);
+}
+function _M0FP29rulescope9rulescope15age__policy__v2() {
+  return _M0FP29rulescope9rulescope6policy("Clean age gate v2", [_M0FP29rulescope9rulescope12input__field("age", _M0FP29rulescope9rulescope15age__policy__v2N6constrS2049, 1), _M0FP29rulescope9rulescope13output__field("access", new _M0DTP29rulescope9rulescope9FieldKind11Enumeration(["allow", "deny", "review"]), 2)], [_M0FP29rulescope9rulescope4rule("A001", "Deny children", 100, [_M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope15age__policy__v2N6constrS2050, 3)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15age__policy__v2N6constrS2051, 4)]), _M0FP29rulescope9rulescope4rule("A003", "Review young users", 100, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope15age__policy__v2N6constrS2052, 5), _M0FP29rulescope9rulescope9predicate("age", 2, _M0FP29rulescope9rulescope15age__policy__v2N6constrS2053, 5)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15age__policy__v2N6constrS2054, 6)]), _M0FP29rulescope9rulescope4rule("A002", "Allow adults", 100, [_M0FP29rulescope9rulescope9predicate("age", 5, _M0FP29rulescope9rulescope15age__policy__v2N6constrS2055, 7)], [_M0FP29rulescope9rulescope6action("access", _M0FP29rulescope9rulescope15age__policy__v2N6constrS2056, 8)])]);
+}
+function _M0FP29rulescope9rulescope14diff__policies(before, after) {
+  return _M0FP29rulescope9rulescope27diff__policies__with__limit(before, after, 12000, 500);
+}
+function _M0MP29rulescope9rulescope10ChangeKind6render(self) {
+  switch (self) {
+    case 0: {
+      return "added-decision";
+    }
+    case 1: {
+      return "removed-decision";
+    }
+    case 2: {
+      return "changed-decision";
+    }
+    default: {
+      return "changed-winning-rule";
+    }
+  }
+}
+function _M0MP29rulescope9rulescope12BehaviorDiff12render__text(self) {
+  let rendered = `Behavior diff: ${self.before_name} -> ${self.after_name}\n`;
+  rendered = `${rendered}checked=${_M0MPC13int3Int18to__string_2einner(self.checked_cases, 10)} changes=${_M0MPC13int3Int18to__string_2einner(self.changes.length, 10)}\n`;
+  const _bind = self.changes;
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const change = _bind[_];
+      const _bind$3 = change.before;
+      let before_value;
+      if (_bind$3 === undefined) {
+        before_value = "<missing>";
+      } else {
+        const _Some = _bind$3;
+        const _value = _Some;
+        before_value = _M0MP29rulescope9rulescope5Value14render__quoted(_value);
+      }
+      const _bind$4 = change.after;
+      let after_value;
+      if (_bind$4 === undefined) {
+        after_value = "<missing>";
+      } else {
+        const _Some = _bind$4;
+        const _value = _Some;
+        after_value = _M0MP29rulescope9rulescope5Value14render__quoted(_value);
+      }
+      rendered = `${rendered}[${_M0MP29rulescope9rulescope10ChangeKind6render(change.kind)}] ${change.output}: ${before_value} -> ${after_value} for ${_M0MP29rulescope9rulescope9InputCase6render(change.input)}\n`;
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return rendered;
 }
 function _M0MP29rulescope9rulescope14AnalysisReport12render__text(self) {
   let rendered = `RuleScope report: ${self.policy_name}\n`;
